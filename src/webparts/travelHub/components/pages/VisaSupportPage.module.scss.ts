@@ -1,0 +1,47 @@
+/* tslint:disable */
+require("./VisaSupportPage.module.css");
+const styles = {
+  title: 'title_1b7fd20e',
+  sub: 'sub_1b7fd20e',
+  sectionTitle: 'sectionTitle_1b7fd20e',
+  panel: 'panel_1b7fd20e',
+  tileGrid: 'tileGrid_1b7fd20e',
+  tile: 'tile_1b7fd20e',
+  tileBig: 'tileBig_1b7fd20e',
+  tileIcon: 'tileIcon_1b7fd20e',
+  tileIconBig: 'tileIconBig_1b7fd20e',
+  tableWrap: 'tableWrap_1b7fd20e',
+  table: 'table_1b7fd20e',
+  rowTitle: 'rowTitle_1b7fd20e',
+  tableEmpty: 'tableEmpty_1b7fd20e',
+  tableFooter: 'tableFooter_1b7fd20e',
+  sidebarLayout: 'sidebarLayout_1b7fd20e',
+  sidebarFilter: 'sidebarFilter_1b7fd20e',
+  filterHeading: 'filterHeading_1b7fd20e',
+  filterActive: 'filterActive_1b7fd20e',
+  filterBar: 'filterBar_1b7fd20e',
+  viewToggle: 'viewToggle_1b7fd20e',
+  toggleActive: 'toggleActive_1b7fd20e',
+  faqTabs: 'faqTabs_1b7fd20e',
+  faqTab: 'faqTab_1b7fd20e',
+  faqTabActive: 'faqTabActive_1b7fd20e',
+  faqItem: 'faqItem_1b7fd20e',
+  faqQuestion: 'faqQuestion_1b7fd20e',
+  faqAnswer: 'faqAnswer_1b7fd20e',
+  searchWrap: 'searchWrap_1b7fd20e',
+  pageHeaderRow: 'pageHeaderRow_1b7fd20e',
+  body: 'body_1b7fd20e',
+  benefitRow: 'benefitRow_1b7fd20e',
+  processPanel: 'processPanel_1b7fd20e',
+  threeCol: 'threeCol_1b7fd20e',
+  destRow: 'destRow_1b7fd20e',
+  flagDot: 'flagDot_1b7fd20e',
+  infoRow: 'infoRow_1b7fd20e',
+  chevron: 'chevron_1b7fd20e',
+  seeAll: 'seeAll_1b7fd20e',
+  helpPanel: 'helpPanel_1b7fd20e',
+  helpItem: 'helpItem_1b7fd20e'
+};
+
+export default styles;
+/* tslint:enable */

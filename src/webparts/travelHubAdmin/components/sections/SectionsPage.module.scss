@@ -1,0 +1,16 @@
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+
+  h2 {
+    margin: 0;
+    font-size: 19px;
+    color: var(--th-primary);
+    font-family: Georgia, serif;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/core-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "travel-hub-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/travelHub/TravelHubWebPart.js",
+          "manifest": "./src/webparts/travelHub/TravelHubWebPart.manifest.json"
+        }
+      ]
+    },
+    "travel-hub-admin-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/travelHubAdmin/TravelHubAdminWebPart.js",
+          "manifest": "./src/webparts/travelHubAdmin/TravelHubAdminWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "TravelHubWebPartStrings": "lib/webparts/travelHub/loc/{locale}.js",
+    "TravelHubAdminWebPartStrings": "lib/webparts/travelHubAdmin/loc/{locale}.js"
+  }
+}

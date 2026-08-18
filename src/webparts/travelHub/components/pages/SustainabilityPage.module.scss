@@ -1,0 +1,103 @@
+@import '../../../../shared/styles/page';
+
+.body {
+  padding-top: 64px;
+}
+
+.leafBadge {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  i {
+    font-size: 44px;
+    color: #fff;
+  }
+}
+
+.guidelinesPanel {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 24px;
+  background: rgba(47, 111, 79, 0.06);
+  border: 1px solid rgba(47, 111, 79, 0.18);
+  border-radius: 16px;
+  padding: 26px 30px;
+  margin: 30px 0;
+  align-items: center;
+
+  @media (max-width: 860px) {
+    grid-template-columns: 1fr;
+  }
+
+  h3 {
+    margin: 0 0 6px;
+    font-family: Georgia, serif;
+    font-size: 17px;
+    color: var(--th-secondary);
+  }
+  p {
+    margin: 0 0 16px;
+    font-size: 12.5px;
+    color: var(--th-text-muted);
+    max-width: 480px;
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12.5px;
+    color: var(--th-text);
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(47, 111, 79, 0.12);
+
+    &:last-child {
+      border-bottom: none;
+    }
+    i {
+      color: var(--th-accent-green);
+    }
+  }
+}
+.guidelinesArt {
+  position: relative;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  > i:first-child {
+    font-size: 150px;
+    color: rgba(47, 111, 79, 0.15);
+  }
+}
+.artPlane {
+  position: absolute;
+  top: 14px;
+  right: 24px;
+  font-size: 24px;
+  color: var(--th-accent-green);
+}
+.artBag {
+  position: absolute;
+  bottom: 14px;
+  left: 30%;
+  font-size: 34px;
+  color: var(--th-accent-green);
+}
+.artRecycle {
+  position: absolute;
+  bottom: 18px;
+  right: 26%;
+  font-size: 28px;
+  color: var(--th-accent-green);
+}

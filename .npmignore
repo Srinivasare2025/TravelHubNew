@@ -1,0 +1,17 @@
+*.scss.ts
+.gitignore
+.yo-rc.json
+gulpfile.js
+
+# Copy over the docs
+docs/
+*.md
+
+# Copy over the assets
+assets
+sharepoint
+
+# Don't ship dev config
+config/
+tsconfig.json
+tslint.json

@@ -1,0 +1,19 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "18.20.4",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.19.0"
+    },
+    "version": "1.18.2",
+    "libraryName": "travel-hub-spfx",
+    "libraryId": "8f3a4b2e-6d1c-4a9f-9e2b-7c5d1e8f3a6b",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "travel-hub-spfx",
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

@@ -1,0 +1,55 @@
+.tableWrap {
+  background: var(--th-card-bg);
+  border: 1px solid var(--th-border);
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  overflow-x: auto;
+}
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.iconBtn {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--th-text-muted);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--th-primary);
+  }
+}
+.yes {
+  color: #1e7e34;
+}
+.no {
+  color: #c0c5cf;
+}
+.pill {
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 12px;
+}
+.pillApproved {
+  background: #e6f6ea;
+  color: #1e7e34;
+}
+.pillPending {
+  background: #fff4e0;
+  color: #b3690a;
+}
+.pillRejected {
+  background: #fde8e8;
+  color: #c62828;
+}
+.pillDraft {
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--th-text-muted);
+}

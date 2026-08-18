@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "travel-hub-spfx-client-side-solution",
+    "id": "8f3a4b2e-6d1c-4a9f-9e2b-7c5d1e8f3a6b",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Travel Hub",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.18.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Travel Hub — policies, guides, bookings and admin dashboard for SharePoint Online"
+      },
+      "longDescription": {
+        "default": "Travel Hub — a multi-page SharePoint Online portal (Home, Book Travel, Policies, Resources, FAQs, Promotions & Events, News) plus a content-management Admin Dashboard, backed entirely by SharePoint lists."
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "Travel Hub Feature",
+        "description": "Deploys the Travel Hub and Travel Hub Admin web parts.",
+        "id": "b1e2c3d4-5f6a-4b7c-8d9e-0a1b2c3d4e5f",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/travel-hub-spfx.sppkg"
+  }
+}

@@ -1,0 +1,124 @@
+.card {
+  position: relative;
+  background: var(--th-card-bg);
+  border: 1px solid var(--th-border);
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.18s ease, transform 0.18s ease;
+
+  &:hover {
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+    transform: translateY(-3px);
+  }
+}
+
+.thumb {
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--th-border);
+}
+
+.body {
+  padding: 15px 17px 17px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  h4 {
+    font-family: Georgia, serif;
+    font-size: 15px;
+    margin: 0 0 2px;
+    color: var(--th-text);
+  }
+}
+
+.subtitle {
+  font-size: 11.5px;
+  color: var(--th-text-muted);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.body p {
+  font-size: 12.5px;
+  color: var(--th-text-muted);
+  line-height: 1.55;
+  margin: 0 0 14px;
+  flex: 1;
+}
+
+.footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.priceBlock {
+  display: flex;
+  flex-direction: column;
+}
+.price {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--th-secondary);
+}
+.priceNote {
+  font-size: 11px;
+  color: #1e7e34;
+  font-weight: 600;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 13px;
+  border-radius: 8px;
+  border: 1px solid var(--th-border);
+  background: #fff;
+  color: var(--th-secondary);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: inherit;
+
+  &:hover {
+    background: var(--th-secondary);
+    color: #fff;
+    border-color: var(--th-secondary);
+  }
+}
+
+.ribbon {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 4px 10px;
+  border-radius: 3px;
+  color: #fff;
+  background: var(--th-primary);
+}
+.limited {
+  background: var(--th-accent-red);
+}
+.exclusive {
+  background: #1e7e34;
+}
+.event {
+  background: var(--th-accent-blue);
+}
+.announcement {
+  background: var(--th-accent-teal);
+}

@@ -1,0 +1,30 @@
+.root {
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Arial, sans-serif;
+  padding: 4px;
+}
+.gateWrap {
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Arial, sans-serif;
+  padding: 40px 20px;
+}
+.layout {
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  gap: 22px;
+  align-items: start;
+}
+@media (max-width: 860px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
+.main {
+  min-width: 0;
+}
+.configWarning {
+  background: #fff4e0;
+  color: #b3690a;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 12.5px;
+  margin-bottom: 14px;
+}

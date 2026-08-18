@@ -1,0 +1,58 @@
+.wrap {
+  display: inline-block;
+}
+.trigger {
+  color: var(--th-primary) !important;
+}
+.panel {
+  padding: 10px;
+  min-width: 220px;
+}
+.panelHeader {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--th-text-muted);
+  margin-bottom: 6px;
+}
+.option,
+.optionActive {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 8px 10px;
+  border: none;
+  background: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  text-align: left;
+  color: var(--th-text);
+}
+.option:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+.optionActive {
+  background: var(--th-primary);
+  color: #fff;
+}
+.swatch {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 1px solid var(--th-border);
+}
+.resetLink {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: none;
+  color: var(--th-primary);
+  font-size: 12px;
+  padding: 8px 10px 2px;
+  cursor: pointer;
+}

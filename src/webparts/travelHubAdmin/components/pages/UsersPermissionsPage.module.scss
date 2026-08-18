@@ -1,0 +1,21 @@
+.count {
+  font-size: 11px;
+  color: var(--th-text-muted);
+  font-weight: 400;
+}
+.member {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--th-border);
+  font-size: 12.5px;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+.email {
+  color: var(--th-text-muted);
+  margin-left: auto;
+}

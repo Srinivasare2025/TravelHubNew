@@ -1,0 +1,21 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+
+  th {
+    text-align: left;
+    padding: 10px 12px;
+    color: var(--th-text-muted);
+    font-size: 11px;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--th-border);
+  }
+  td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--th-border);
+  }
+  tr:last-child td {
+    border-bottom: none;
+  }
+}

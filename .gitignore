@@ -1,0 +1,31 @@
+# Logs
+*.log
+npm-debug.log*
+
+# Dependency directories
+node_modules
+
+# Build generated files
+dist
+lib
+solution
+temp
+*.sppkg
+release
+deploy
+coverage
+.heft
+
+# Editor / OS
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea
+.DS_Store
+Thumbs.db
+
+# SPFx serve certificate / cache
+.serve.json
+*.sensitive.json

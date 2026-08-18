@@ -1,0 +1,15 @@
+{
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "editor.formatOnSave": false,
+  "files.exclude": {
+    "**/lib": true,
+    "**/temp": true,
+    "**/*.scss.ts": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/lib": true,
+    "**/dist": true,
+    "**/solution": true
+  }
+}

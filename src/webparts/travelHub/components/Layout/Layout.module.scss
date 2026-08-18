@@ -1,0 +1,13 @@
+.shell {
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+.main {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 16px 40px;
+  box-sizing: border-box;
+  flex: 1;
+}

@@ -1,0 +1,131 @@
+@import '../../../../shared/styles/page';
+
+.body {
+  padding-top: 64px;
+}
+
+// ---- Hero filter panel ----
+.filterPanel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 18px;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 14px;
+  padding: 16px 20px;
+
+  span {
+    display: block;
+    font-size: 10.5px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 5px;
+  }
+  select {
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    font-size: 12px;
+  }
+  a {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--th-primary);
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    padding-bottom: 9px;
+  }
+}
+.filterField {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.twoCol {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 30px 0;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
+}
+.threeCol {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 30px 0;
+
+  @media (max-width: 980px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.panelSub {
+  margin: -8px 0 12px;
+  font-size: 11px;
+  color: var(--th-text-muted);
+}
+.panelHeaderRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+
+  h3 {
+    margin: 0;
+  }
+  a {
+    font-size: 11.5px;
+    color: var(--th-primary);
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+  }
+}
+.panelHint {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--th-text-muted);
+}
+
+.complianceNote {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 10px 12px;
+  background: rgba(30, 126, 52, 0.08);
+  border-radius: 8px;
+  font-size: 11.5px;
+  color: #1e7e34;
+
+  i {
+    color: #1e7e34;
+  }
+}
+
+.up {
+  color: #1e7e34;
+  font-weight: 700;
+}
+.down {
+  color: var(--th-accent-red);
+  font-weight: 700;
+}

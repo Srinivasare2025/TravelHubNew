@@ -1,0 +1,45 @@
+/* tslint:disable */
+require("./LeisureTravelPage.module.css");
+const styles = {
+  title: 'title_6dfa43dd',
+  sub: 'sub_6dfa43dd',
+  sectionTitle: 'sectionTitle_6dfa43dd',
+  panel: 'panel_6dfa43dd',
+  tileGrid: 'tileGrid_6dfa43dd',
+  tile: 'tile_6dfa43dd',
+  tileBig: 'tileBig_6dfa43dd',
+  tileIcon: 'tileIcon_6dfa43dd',
+  tileIconBig: 'tileIconBig_6dfa43dd',
+  tableWrap: 'tableWrap_6dfa43dd',
+  table: 'table_6dfa43dd',
+  rowTitle: 'rowTitle_6dfa43dd',
+  tableEmpty: 'tableEmpty_6dfa43dd',
+  tableFooter: 'tableFooter_6dfa43dd',
+  sidebarLayout: 'sidebarLayout_6dfa43dd',
+  sidebarFilter: 'sidebarFilter_6dfa43dd',
+  filterHeading: 'filterHeading_6dfa43dd',
+  filterActive: 'filterActive_6dfa43dd',
+  filterBar: 'filterBar_6dfa43dd',
+  viewToggle: 'viewToggle_6dfa43dd',
+  toggleActive: 'toggleActive_6dfa43dd',
+  faqTabs: 'faqTabs_6dfa43dd',
+  faqTab: 'faqTab_6dfa43dd',
+  faqTabActive: 'faqTabActive_6dfa43dd',
+  faqItem: 'faqItem_6dfa43dd',
+  faqQuestion: 'faqQuestion_6dfa43dd',
+  faqAnswer: 'faqAnswer_6dfa43dd',
+  searchWrap: 'searchWrap_6dfa43dd',
+  pageHeaderRow: 'pageHeaderRow_6dfa43dd',
+  body: 'body_6dfa43dd',
+  benefitRow: 'benefitRow_6dfa43dd',
+  searchPanel: 'searchPanel_6dfa43dd',
+  outlineLink: 'outlineLink_6dfa43dd',
+  searchBar: 'searchBar_6dfa43dd',
+  searchField: 'searchField_6dfa43dd',
+  offerGrid: 'offerGrid_6dfa43dd',
+  destGrid: 'destGrid_6dfa43dd',
+  destTile: 'destTile_6dfa43dd'
+};
+
+export default styles;
+/* tslint:enable */
