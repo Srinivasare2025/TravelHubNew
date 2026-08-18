@@ -12,7 +12,7 @@ const CATEGORY_CARDS = [
   { icon: 'Airplane', accent: 'primary' as const, title: 'Business Travel', description: 'Plan, book and manage your business travel with ease and compliance.', route: '/sap-concur' },
   { icon: 'Sunny', accent: 'teal' as const, title: 'Leisure Travel', description: 'Exclusive deals on hotels, experiences and holiday packages.', route: '/leisure-travel' },
   { icon: 'Shield', accent: 'bronze' as const, title: 'Travel Care', description: 'Your safety and wellbeing is our top priority, 24/7 everywhere.', route: '/travel-care' },
-  { icon: 'Leaf', accent: 'green' as const, title: 'Sustainability', description: 'Travel responsibly. Together, we build a sustainable future.', route: '/sustainability' },
+  { icon: 'Flower', accent: 'green' as const, title: 'Sustainability', description: 'Travel responsibly. Together, we build a sustainable future.', route: '/sustainability' },
   { icon: 'Headset', accent: 'blue' as const, title: 'Support Center', description: 'Get quick help, find guides, FAQs and expert support.', route: '/sap-concur' }
 ];
 

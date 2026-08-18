@@ -27,8 +27,8 @@ export const StatStrip: React.FC<IStatStripProps> = ({ stats, variant = 'panel' 
     {stats.map((s, i) => (
       <div key={i} className={styles.stat}>
         {s.icon && <Icon iconName={s.icon} className={styles.icon} />}
-        <div className={[styles.value, s.valueColor === 'secondary' ? styles.secondary : s.valueColor === 'primary' ? styles.primary : ''].join(' ').trim()}>{s.value}</div>
         <div className={styles.label}>{s.label}</div>
+        <div className={[styles.value, s.valueColor === 'secondary' ? styles.secondary : s.valueColor === 'primary' ? styles.primary : ''].join(' ').trim()}>{s.value}</div>
         {s.deltaLabel && <div className={[styles.delta, s.deltaUp === false ? styles.down : styles.up].join(' ')}>{s.deltaLabel}</div>}
       </div>
     ))}

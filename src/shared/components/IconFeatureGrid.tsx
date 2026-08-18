@@ -20,6 +20,8 @@ export interface IIconFeatureGridProps {
   accent?: 'primary' | 'secondary' | 'teal' | 'blue' | 'green' | 'bronze';
   /** Larger icon/tile variant, used for the handful of sections with only 4-5 big tiles. */
   size?: 'default' | 'large';
+  /** 'horizontal' lays out icon-left/title-right with a plain (non-badge) icon — used by Home's Quick Access row. Default keeps the icon-badge-on-top tile look every other page uses. */
+  layout?: 'default' | 'horizontal';
 }
 
 const ACCENT_VAR: Record<string, string> = {
@@ -32,8 +34,11 @@ const ACCENT_VAR: Record<string, string> = {
  * Explore by Category, Our Wellness Pillars, "How can we help", Visa
  * services, Sustainability commitment cards, Travel Care support types, etc.
  */
-export const IconFeatureGrid: React.FC<IIconFeatureGridProps> = ({ items, columns = 4, accent = 'primary', size = 'default' }) => (
-  <div className={[styles.grid, size === 'large' ? styles.large : ''].join(' ').trim()} style={{ '--cols': columns } as React.CSSProperties}>
+export const IconFeatureGrid: React.FC<IIconFeatureGridProps> = ({ items, columns = 4, accent = 'primary', size = 'default', layout = 'default' }) => (
+  <div
+    className={[styles.grid, size === 'large' ? styles.large : '', layout === 'horizontal' ? styles.horizontal : ''].join(' ').trim()}
+    style={{ '--cols': columns } as React.CSSProperties}
+  >
     {items.map((item, i) => (
       <div
         key={i}
@@ -42,7 +47,7 @@ export const IconFeatureGrid: React.FC<IIconFeatureGridProps> = ({ items, column
         role={item.onClick ? 'button' : undefined}
         tabIndex={item.onClick ? 0 : undefined}
       >
-        <span className={styles.iconBadge} style={{ background: ACCENT_VAR[item.accent || accent] }}>
+        <span className={styles.iconBadge} style={layout === 'horizontal' ? undefined : { background: ACCENT_VAR[item.accent || accent] }}>
           <Icon iconName={item.icon} />
         </span>
         <h4>{item.title}</h4>

@@ -2,12 +2,14 @@ import * as React from 'react';
 import { useServiceContext } from '../../../../state/ServiceContext';
 import styles from './Footer.module.scss';
 
+const FOOTER_LINKS = ['About Travel Services', 'Privacy Policy', 'Terms of Use', 'Compliance'];
+
 /**
- * The plain link + copyright bar seen at the bottom of every mockup page
- * (About Travel Services / Privacy Policy / Terms of Use / Compliance … ©
- * {year} {org}. All rights reserved.) — the richer "24/7 Travel Care"
- * contact band on the mockup's Home page is Home-specific content
- * (a `CTABand` there), not part of the global Footer.
+ * The plain link + copyright bar seen at the bottom of every page (About
+ * Travel Services | Privacy Policy | Terms of Use | Compliance … © {year}
+ * {org}. All rights reserved.), pipe-separated, no fill color of its own —
+ * the richer "24/7 Travel Care" contact band on the Home page is
+ * Home-specific content, not part of this global Footer.
  */
 export const Footer: React.FC = () => {
   const { config } = useServiceContext();
@@ -18,11 +20,12 @@ export const Footer: React.FC = () => {
     <footer className={styles.footer}>
       <div className={styles.inner}>
         <div className={styles.links}>
-          <a href="#">About Travel Services</a>
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Use</a>
-          <a href="#">Compliance</a>
-          <a href="#/home-alternate" className={styles.altLink}>Home (Alternate Layout)</a>
+          {FOOTER_LINKS.map((label, i) => (
+            <React.Fragment key={label}>
+              {i > 0 && <span className={styles.pipe} aria-hidden="true">|</span>}
+              <a href="#">{label}</a>
+            </React.Fragment>
+          ))}
         </div>
         <div className={styles.copyright}>&copy; {year} {orgName}. All rights reserved.</div>
       </div>

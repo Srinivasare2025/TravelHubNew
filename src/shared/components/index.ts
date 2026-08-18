@@ -5,6 +5,7 @@ export * from './Pagination';
 export * from './SectionHeading';
 export * from './ThemedRoot';
 export * from './ThemePicker';
+export * from './DataSourcePicker';
 export * from './ContentCard';
 export * from './Toast';
 export * from './Hero';

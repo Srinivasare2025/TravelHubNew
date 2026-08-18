@@ -1,11 +1,12 @@
 /* tslint:disable */
 require("./IconFeatureGrid.module.css");
 const styles = {
-  grid: 'grid_b9ae84de',
-  tile: 'tile_b9ae84de',
-  iconBadge: 'iconBadge_b9ae84de',
-  link: 'link_b9ae84de',
-  large: 'large_b9ae84de'
+  grid: 'grid_4a2cc650',
+  tile: 'tile_4a2cc650',
+  iconBadge: 'iconBadge_4a2cc650',
+  link: 'link_4a2cc650',
+  large: 'large_4a2cc650',
+  horizontal: 'horizontal_4a2cc650'
 };
 
 export default styles;

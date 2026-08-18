@@ -62,6 +62,7 @@ export interface IAppConfig {
   groups: IGroupNameConfig;
   uploadsFolderUrl: string; // server-relative, e.g. /sites/TravelHub/SiteAssets/travelhub/uploads
   heroImageUrl: string; // default Home hero background, overridable
+  logoUrl: string; // header brand logo — '' falls back to the built-in generated mark
   defaultTheme: ThemeKey;
   organizationName: string;
 }
@@ -72,6 +73,7 @@ export const DEFAULT_APP_CONFIG: IAppConfig = {
   groups: DEFAULT_GROUP_NAMES,
   uploadsFolderUrl: '',
   heroImageUrl: '',
+  logoUrl: '',
   defaultTheme: 'goldNavy',
   organizationName: 'Red Sea Global'
 };

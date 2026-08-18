@@ -23,7 +23,7 @@ const WHY_US = [
   { icon: 'People', title: 'Dedicated Support', description: 'A single point of contact for your event needs.' },
   { icon: 'Money', title: 'Best Value', description: 'Competitive rates and added value for your events.' },
   { icon: 'Settings', title: 'Customized Solutions', description: 'Tailored packages to match your requirements.' },
-  { icon: 'Leaf', title: 'Sustainability Focused', description: 'Eco-conscious venues and responsible events.' },
+  { icon: 'Flower', title: 'Sustainability Focused', description: 'Eco-conscious venues and responsible events.' },
   { icon: 'Globe', title: 'Global Reach', description: 'Access to top hotels and venues worldwide.' }
 ];
 
@@ -68,7 +68,7 @@ export const MeetingsEventsPage: React.FC = () => {
             <div><Icon iconName="FavoriteStar" /><span>Preferred Rates & Exclusive Benefits</span></div>
             <div><Icon iconName="CalendarAgenda" /><span>End-to-End Event Support</span></div>
             <div><Icon iconName="Shield" /><span>Quality & Service You Can Trust</span></div>
-            <div><Icon iconName="Leaf" /><span>Sustainable Event Options</span></div>
+            <div><Icon iconName="Flower" /><span>Sustainable Event Options</span></div>
           </div>
         )}
       />

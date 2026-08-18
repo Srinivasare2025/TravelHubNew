@@ -1,0 +1,34 @@
+.wrap {
+  display: inline-block;
+}
+.trigger {
+  color: var(--th-primary) !important;
+}
+.panel {
+  padding: 10px;
+  min-width: 240px;
+}
+.panelHeader {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--th-text-muted);
+  margin-bottom: 6px;
+}
+.hint {
+  margin: 6px 2px 0;
+  font-size: 11px;
+  color: var(--th-text-muted);
+}
+.resetLink {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: none;
+  color: var(--th-primary);
+  font-size: 12px;
+  padding: 8px 2px 2px;
+  cursor: pointer;
+}

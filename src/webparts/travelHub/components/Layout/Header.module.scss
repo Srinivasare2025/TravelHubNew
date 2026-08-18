@@ -7,7 +7,10 @@
   display: flex;
   align-items: center;
   gap: 20px;
+  max-width: 1280px;
+  margin: 0 auto;
   padding: 12px 24px;
+  box-sizing: border-box;
   flex-wrap: wrap;
 }
 
@@ -191,6 +194,24 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  min-width: 0;
+
+  // Keep the name readable, never let it force the header wider than the page.
+  :global(.ms-Persona-details) {
+    min-width: 0;
+  }
+  :global(.ms-Persona-primaryText) {
+    max-width: 160px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+@media (max-width: 760px) {
+  // Name text is the first thing to go on a narrow header — the photo/initials stays.
+  .profile :global(.ms-Persona-details) {
+    display: none;
+  }
 }
 
 @media (max-width: 640px) {

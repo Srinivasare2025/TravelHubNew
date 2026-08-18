@@ -5,6 +5,7 @@ export interface ITeamMember {
   Id: number;
   Name: string;
   Role: string;
+  Department?: string;
   Photo?: IUrlFieldValue;
   Email?: string;
   Phone?: string;

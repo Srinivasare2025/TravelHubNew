@@ -9,7 +9,7 @@ import styles from './PoliciesPage.module.scss';
 const SUBSIDIARIES = [
   { icon: 'CityNext', title: 'Amarak', description: 'View travel policies and guidelines applicable to Amarak.' },
   { icon: 'Shield', title: 'Red Sea Security', description: 'View travel policies and guidelines applicable to Red Sea Security.' },
-  { icon: 'Leaf', title: 'Nursery', description: 'View travel policies and guidelines applicable to Nursery.' },
+  { icon: 'Flower', title: 'Nursery', description: 'View travel policies and guidelines applicable to Nursery.' },
   { icon: 'People', title: 'CCC', description: 'View travel policies and guidelines applicable to CCC.' }
 ];
 

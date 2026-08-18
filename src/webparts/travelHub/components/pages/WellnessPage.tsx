@@ -15,7 +15,7 @@ const PILLARS = [
   { icon: 'FamilyEvent', title: 'Family', description: 'Family time, staycations and shared experiences' },
   { icon: 'EatDrink', title: 'Nutrition', description: 'Healthy dining guidance and nutrition support' },
   { icon: 'Trackers', title: 'Adventure', description: 'Explore, connect with nature and stay active' },
-  { icon: 'Leaf', title: 'Sustainability', description: 'Responsible travel and eco-friendly experiences' }
+  { icon: 'Flower', title: 'Sustainability', description: 'Responsible travel and eco-friendly experiences' }
 ];
 
 const RETREATS = [
@@ -68,7 +68,7 @@ export const WellnessPage: React.FC = () => {
         highlight="Recharge. Reconnect. Perform Better."
         description="A holistic wellbeing initiative by Travel Services – F&A in partnership with premium hotels and destinations. Exclusive experiences for a healthier you and your family."
         backgroundImageUrl={resortHeroPlaceholderImage(theme.palette.primary, theme.palette.secondary)}
-        media={<div className={styles.wellBadge}><Icon iconName="Leaf" /><span>Wellbeing today for a better tomorrow</span></div>}
+        media={<div className={styles.wellBadge}><Icon iconName="Flower" /><span>Wellbeing today for a better tomorrow</span></div>}
         infoStrip={(
           <div className={styles.benefitRow}>
             <div><Icon iconName="Health" /><span>Employee Wellbeing</span></div>

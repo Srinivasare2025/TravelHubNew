@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <ClientSideComponent
+    Name="TravelHubWebPart"
+    ComponentType="WebPart"
+    ComponentId="c3d4e5f6-1a2b-4c3d-8e9f-0a1b2c3d4e5f"
+    PropertiesJson="{&quot;description&quot;:&quot;Travel Hub&quot;}" />
+  <ClientSideComponent
+    Name="TravelHubAdminWebPart"
+    ComponentType="WebPart"
+    ComponentId="d4e5f6a7-2b3c-4d5e-9f0a-1b2c3d4e5f6a"
+    PropertiesJson="{&quot;description&quot;:&quot;Travel Hub Admin&quot;}" />
+</Elements>

@@ -28,7 +28,7 @@ const WHY_US = [
   { icon: 'Contact', title: 'Experienced Chefs', description: 'Expertise in every bite' },
   { icon: 'Shield', title: 'Hygiene & Safety', description: 'Highest standards' },
   { icon: 'Repair', title: 'Flexible & Reliable', description: 'Tailored to your needs' },
-  { icon: 'Leaf', title: 'Sustainable Choices', description: 'Responsibly sourced wherever possible' }
+  { icon: 'Flower', title: 'Sustainable Choices', description: 'Responsibly sourced wherever possible' }
 ];
 
 const LUNCH_COLUMNS = [

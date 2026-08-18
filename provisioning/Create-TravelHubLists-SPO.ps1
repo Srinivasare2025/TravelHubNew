@@ -175,6 +175,76 @@ New-PnPList -Title "TravelHubConfig" -Template GenericList
 Add-TextField -ListTitle "TravelHubConfig" -InternalName "ConfigValue" -DisplayName "Config Value" -Multiline
 
 # ---------------------------------------------------------------------------
+# 10. TravelOffers (Custom List) — Leisure Travel's Featured Offers, Wellness's
+#     hotel & package rows, Meetings & Events' partner hotel tiles (Category
+#     tells them apart), and Home's "RSG Destination Hotels & Offers" promo card.
+# ---------------------------------------------------------------------------
+Write-Host "Creating TravelOffers..." -ForegroundColor Cyan
+New-PnPList -Title "TravelOffers" -Template GenericList
+Add-TextField   -ListTitle "TravelOffers" -InternalName "Subtitle" -DisplayName "Subtitle"
+Add-TextField   -ListTitle "TravelOffers" -InternalName "Description" -DisplayName "Description" -Multiline
+Add-ChoiceField -ListTitle "TravelOffers" -InternalName "Category" -DisplayName "Category" -Choices @("Leisure","Wellness","Hotel Partner")
+# Free-form facets (city name, 'Riyadh Hotels', 'Red Sea Destination Hotels', ...) — semicolon-separate multiple values.
+Add-TextField   -ListTitle "TravelOffers" -InternalName "Tags" -DisplayName "Tags"
+Add-UrlField    -ListTitle "TravelOffers" -InternalName "Image" -DisplayName "Image"
+Add-TextField   -ListTitle "TravelOffers" -InternalName "Price" -DisplayName "Price"
+Add-TextField   -ListTitle "TravelOffers" -InternalName "PriceNote" -DisplayName "Price Note"
+Add-TextField   -ListTitle "TravelOffers" -InternalName "Badge" -DisplayName "Badge"
+Add-ChoiceField -ListTitle "TravelOffers" -InternalName "BadgeVariant" -DisplayName "Badge Variant" -Choices @("limited","exclusive","event","announcement")
+Add-TextField   -ListTitle "TravelOffers" -InternalName "Location" -DisplayName "Location"
+Add-TextField   -ListTitle "TravelOffers" -InternalName "CtaLabel" -DisplayName "CTA Label"
+Add-NumberField -ListTitle "TravelOffers" -InternalName "SortOrder" -DisplayName "Sort Order"
+
+# ---------------------------------------------------------------------------
+# 11. TravelCateringMenus (Custom List) — Catering page's menu packages.
+# ---------------------------------------------------------------------------
+Write-Host "Creating TravelCateringMenus..." -ForegroundColor Cyan
+New-PnPList -Title "TravelCateringMenus" -Template GenericList
+Add-TextField   -ListTitle "TravelCateringMenus" -InternalName "Name" -DisplayName "Name"
+Add-TextField   -ListTitle "TravelCateringMenus" -InternalName "Description" -DisplayName "Description"
+# One item per line.
+Add-TextField   -ListTitle "TravelCateringMenus" -InternalName "Items" -DisplayName "Items" -Multiline
+Add-UrlField    -ListTitle "TravelCateringMenus" -InternalName "Image" -DisplayName "Image"
+Add-NumberField -ListTitle "TravelCateringMenus" -InternalName "SortOrder" -DisplayName "Sort Order"
+
+# ---------------------------------------------------------------------------
+# 12. TravelSustainabilityMetrics (Custom List) — Sustainability page's and
+#     Home's "Our Impact" / stat-strip rows.
+# ---------------------------------------------------------------------------
+Write-Host "Creating TravelSustainabilityMetrics..." -ForegroundColor Cyan
+New-PnPList -Title "TravelSustainabilityMetrics" -Template GenericList
+Add-TextField   -ListTitle "TravelSustainabilityMetrics" -InternalName "Icon" -DisplayName "Icon"
+Add-TextField   -ListTitle "TravelSustainabilityMetrics" -InternalName "Value" -DisplayName "Value"
+Add-TextField   -ListTitle "TravelSustainabilityMetrics" -InternalName "Label" -DisplayName "Label"
+Add-TextField   -ListTitle "TravelSustainabilityMetrics" -InternalName "DeltaLabel" -DisplayName "Delta Label"
+Add-NumberField -ListTitle "TravelSustainabilityMetrics" -InternalName "SortOrder" -DisplayName "Sort Order"
+
+# ---------------------------------------------------------------------------
+# 13. TravelServicesTeam (Custom List) — Home's "Meet the Travel Services Team".
+# ---------------------------------------------------------------------------
+Write-Host "Creating TravelServicesTeam..." -ForegroundColor Cyan
+New-PnPList -Title "TravelServicesTeam" -Template GenericList
+Add-TextField   -ListTitle "TravelServicesTeam" -InternalName "Name" -DisplayName "Name"
+Add-TextField   -ListTitle "TravelServicesTeam" -InternalName "Role" -DisplayName "Role"
+Add-TextField   -ListTitle "TravelServicesTeam" -InternalName "Department" -DisplayName "Department"
+Add-UrlField    -ListTitle "TravelServicesTeam" -InternalName "Photo" -DisplayName "Photo"
+Add-TextField   -ListTitle "TravelServicesTeam" -InternalName "Email" -DisplayName "Email"
+Add-TextField   -ListTitle "TravelServicesTeam" -InternalName "Phone" -DisplayName "Phone"
+Add-UrlField    -ListTitle "TravelServicesTeam" -InternalName "LinkedInUrl" -DisplayName "LinkedIn URL"
+Add-NumberField -ListTitle "TravelServicesTeam" -InternalName "SortOrder" -DisplayName "Sort Order"
+
+# ---------------------------------------------------------------------------
+# 14. TravelTestimonials (Custom List) — Home Alternate's "What Our Travelers Say".
+# ---------------------------------------------------------------------------
+Write-Host "Creating TravelTestimonials..." -ForegroundColor Cyan
+New-PnPList -Title "TravelTestimonials" -Template GenericList
+Add-TextField   -ListTitle "TravelTestimonials" -InternalName "Quote" -DisplayName "Quote" -Multiline
+Add-TextField   -ListTitle "TravelTestimonials" -InternalName "Name" -DisplayName "Name"
+Add-TextField   -ListTitle "TravelTestimonials" -InternalName "Role" -DisplayName "Role"
+Add-UrlField    -ListTitle "TravelTestimonials" -InternalName "Photo" -DisplayName "Photo"
+Add-NumberField -ListTitle "TravelTestimonials" -InternalName "SortOrder" -DisplayName "Sort Order"
+
+# ---------------------------------------------------------------------------
 # Groups & permissions
 # ---------------------------------------------------------------------------
 Write-Host "Creating SharePoint groups..." -ForegroundColor Cyan

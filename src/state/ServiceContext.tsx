@@ -12,6 +12,8 @@ export interface IServiceContextValue {
   error: string | undefined;
   /** Re-reads TravelHubConfig and re-scopes the service if siteUrl changed — call after Settings saves. */
   refreshConfig: () => Promise<void>;
+  /** The web part's own site (not `config.siteUrl`, which may point elsewhere for content lists) — used to build the current user's profile-photo URL. */
+  webAbsoluteUrl: string;
 }
 
 const ServiceContext = React.createContext<IServiceContextValue | undefined>(undefined);
@@ -56,7 +58,7 @@ export const ServiceProvider: React.FC<{ context: WebPartContext; children: Reac
   }, [load]);
 
   const value: IServiceContextValue | undefined = state
-    ? { service: state.service, config: state.config, loading, error, refreshConfig: load }
+    ? { service: state.service, config: state.config, loading, error, refreshConfig: load, webAbsoluteUrl: context.pageContext.web.absoluteUrl }
     : undefined;
 
   if (!value) return null; // brief flash before first config load resolves

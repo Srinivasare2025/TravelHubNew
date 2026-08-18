@@ -44,6 +44,7 @@ export class ConfigService {
       },
       uploadsFolderUrl: rows.uploadsFolderUrl ?? DEFAULT_APP_CONFIG.uploadsFolderUrl,
       heroImageUrl: rows.heroImageUrl ?? DEFAULT_APP_CONFIG.heroImageUrl,
+      logoUrl: rows.logoUrl ?? DEFAULT_APP_CONFIG.logoUrl,
       defaultTheme: (rows.defaultTheme as ThemeKey) ?? DEFAULT_APP_CONFIG.defaultTheme,
       organizationName: rows.organizationName ?? DEFAULT_APP_CONFIG.organizationName
     };
@@ -70,6 +71,7 @@ export class ConfigService {
       group_visitors: config.groups.visitors,
       uploadsFolderUrl: config.uploadsFolderUrl,
       heroImageUrl: config.heroImageUrl,
+      logoUrl: config.logoUrl,
       defaultTheme: config.defaultTheme,
       organizationName: config.organizationName
     };

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
-import { Version } from '@microsoft/sp-core-library';
+import { DisplayMode, Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
@@ -27,9 +27,17 @@ export default class TravelHubWebPart extends BaseClientSideWebPart<ITravelHubWe
 
   public render(): void {
     const element: React.ReactElement<IAppProps> = React.createElement(App, {
-      context: this.context
+      context: this.context,
+      isReadMode: this.displayMode === DisplayMode.Read
     });
     ReactDom.render(element, this.domElement);
+  }
+
+  // Re-renders with the new displayMode the moment a page owner toggles
+  // Edit/Preview, so the App effect that hides SharePoint's chrome (Read
+  // mode only) turns itself off the instant editing starts.
+  protected onDisplayModeChanged(_oldDisplayMode: DisplayMode): void {
+    this.render();
   }
 
   protected onDispose(): void {

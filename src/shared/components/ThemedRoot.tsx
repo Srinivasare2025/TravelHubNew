@@ -7,7 +7,7 @@ import { useThemeContext } from '../../state/ThemeContext';
  * never a hard-coded hex value — so switching themes is just re-setting
  * these on one wrapping element. This is that element.
  *
- * The 5 --th-accent-* properties below are a deliberate, scoped exception to
+ * The --th-accent-* properties below are a deliberate, scoped exception to
  * that rule (mirroring the moderation-status pill precedent): the mockup
  * uses a distinct color per page section (Leisure/Wellness teal, SAP Concur
  * blue, Sustainability green, Policies bronze, emergency/alert red) that
@@ -29,6 +29,8 @@ export const ThemedRoot: React.FC<{ children: React.ReactNode; className?: strin
     '--th-accent-green': '#2f6f4f',
     '--th-accent-bronze': '#a97c3f',
     '--th-accent-red': '#c0392b',
+    /** Lighter-than-secondary navy blue — Home's Quick Access icon/text (a plain icon+label row, not a colored badge). */
+    '--th-accent-navy-light': '#1d5079',
     background: 'var(--th-bg)',
     color: 'var(--th-text)',
     minHeight: '100%'

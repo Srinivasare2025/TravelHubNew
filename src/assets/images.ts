@@ -45,7 +45,11 @@ export function heroPlaceholderImage(primary: string, secondary: string): string
 }
 
 /** Small card thumbnail: gradient + a simple icon glyph (kept generic — no external icon font needed here). */
-export function cardPlaceholderImage(primary: string, secondary: string, variant: 'news' | 'update' | 'event' | 'promo' | 'exclusive' | 'upcoming' | 'announcement'): string {
+export function cardPlaceholderImage(
+  primary: string,
+  secondary: string,
+  variant: 'news' | 'update' | 'event' | 'promo' | 'exclusive' | 'upcoming' | 'announcement' | 'leaf' | 'hotel' | 'journey' | 'receipt'
+): string {
   const icons: Record<string, string> = {
     news: '<circle cx="0" cy="0" r="22"/><rect x="-30" y="26" width="60" height="6" rx="3"/>',
     update: '<path d="M-20,-4 a20,20 0 1 1 4,16 l6,-2 M-20,-4 l0,-14 l14,4"/>',
@@ -53,7 +57,11 @@ export function cardPlaceholderImage(primary: string, secondary: string, variant
     promo: '<path d="M-26,0 L0,-24 L26,0 L0,24 Z"/>',
     exclusive: '<path d="M0,-24 L6,-8 L24,-8 L10,4 L15,22 L0,10 L-15,22 L-10,4 L-24,-8 L-6,-8 Z"/>',
     upcoming: '<rect x="-24" y="-20" width="48" height="40" rx="4"/><rect x="-24" y="-8" width="48" height="4"/><circle cx="10" cy="10" r="3"/>',
-    announcement: '<path d="M-24,-10 L4,-10 L4,-20 L26,0 L4,20 L4,10 L-24,10 Z"/>'
+    announcement: '<path d="M-24,-10 L4,-10 L4,-20 L26,0 L4,20 L4,10 L-24,10 Z"/>',
+    leaf: '<path d="M-24,24 C-24,-8 8,-24 26,-24 C26,-6 10,24 -24,24 Z"/><path d="M-24,24 C-14,10 0,-2 22,-20"/>',
+    hotel: '<rect x="-26" y="-24" width="52" height="48" rx="3"/><line x1="-26" y1="-10" x2="26" y2="-10"/><line x1="-26" y1="4" x2="26" y2="4"/><line x1="-10" y1="-24" x2="-10" y2="24"/><line x1="10" y1="-24" x2="10" y2="24"/>',
+    journey: '<path d="M-26,4 L20,4 L28,-4 L34,-4 L28,4 L36,4 L36,10 L28,10 L34,18 L28,18 L20,10 L-26,10 Z"/><path d="M-6,10 L-12,22 L-4,22 L2,10 M14,10 L12,22 L20,22 L22,10"/>',
+    receipt: '<path d="M-18,-26 L18,-26 L18,26 L10,20 L2,26 L-6,20 L-14,26 L-18,20 Z"/><line x1="-10" y1="-14" x2="10" y2="-14"/><line x1="-10" y1="-4" x2="10" y2="-4"/><line x1="-10" y1="6" x2="4" y2="6"/>'
   };
   const svg = `
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 260">
@@ -65,6 +73,46 @@ export function cardPlaceholderImage(primary: string, secondary: string, variant
   </g>
   <g transform="translate(250,130)" fill="none" stroke="#ffffff" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" opacity="0.9">
     ${icons[variant] || icons.news}
+  </g>
+</svg>`.trim();
+  return svgToDataUri(svg);
+}
+
+/**
+ * Wide banner with a laptop + phone "dashboard" mockup drawn into the right
+ * half of the frame (bars/line simulating charts on both screens) — used as
+ * a CSS `background-image` behind the SAP Concur Hub card, so the visual
+ * sits to the right of the card's text content per the Home page mockup.
+ */
+export function deviceMockupPlaceholderImage(primary: string, secondary: string): string {
+  const svg = `
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420">
+  <defs>${gradientDefs('deviceGrad', secondary, primary)}</defs>
+  <rect width="900" height="420" fill="url(#deviceGrad)"/>
+  <g opacity="0.14" fill="#ffffff">
+    <circle cx="760" cy="70" r="110"/>
+  </g>
+  <!-- laptop -->
+  <g transform="translate(430,90)">
+    <rect x="0" y="0" width="330" height="200" rx="10" fill="#ffffff" fill-opacity="0.14" stroke="#ffffff" stroke-opacity="0.5" stroke-width="3"/>
+    <rect x="-24" y="200" width="378" height="16" rx="8" fill="#ffffff" fill-opacity="0.22"/>
+    <g fill="#ffffff" fill-opacity="0.75">
+      <rect x="24" y="130" width="30" height="46"/>
+      <rect x="64" y="104" width="30" height="72"/>
+      <rect x="104" y="118" width="30" height="58"/>
+      <rect x="144" y="90" width="30" height="86"/>
+    </g>
+    <path d="M24,80 Q120,20 300,50" stroke="#ffffff" stroke-opacity="0.85" stroke-width="4" fill="none" stroke-linecap="round"/>
+  </g>
+  <!-- phone -->
+  <g transform="translate(700,150) rotate(-6)">
+    <rect x="0" y="0" width="112" height="220" rx="18" fill="#ffffff" fill-opacity="0.16" stroke="#ffffff" stroke-opacity="0.55" stroke-width="3"/>
+    <rect x="16" y="26" width="80" height="10" rx="5" fill="#ffffff" fill-opacity="0.7"/>
+    <rect x="16" y="52" width="80" height="46" rx="6" fill="#ffffff" fill-opacity="0.22"/>
+    <rect x="16" y="106" width="36" height="36" rx="6" fill="#ffffff" fill-opacity="0.3"/>
+    <rect x="60" y="106" width="36" height="36" rx="6" fill="#ffffff" fill-opacity="0.3"/>
+    <rect x="16" y="150" width="80" height="10" rx="5" fill="#ffffff" fill-opacity="0.45"/>
+    <rect x="16" y="168" width="56" height="10" rx="5" fill="#ffffff" fill-opacity="0.45"/>
   </g>
 </svg>`.trim();
   return svgToDataUri(svg);

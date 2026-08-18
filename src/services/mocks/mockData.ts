@@ -117,14 +117,22 @@ export function createMockStore(): IMockStore {
       { Id: 3, Title: 'Sustainability in Travel', Summary: 'Our commitment to green travel.', Body: 'Full article body...', Category: 'News', PublishDate: '2026-05-08', IsFeatured: false, Modified: '2026-05-08' },
       { Id: 4, Title: 'Top Destinations for 2026', Summary: 'Explore trending business travel destinations.', Body: 'Full article body...', Category: 'Update', PublishDate: '2026-05-05', IsFeatured: false, Modified: '2026-05-05' }
     ],
+    // Home page's "Quick Access" row reads straight from this list (via
+    // getQuickLinks()) — reordering/renaming/adding rows here is the whole
+    // edit, no code change needed.
     TravelQuickLinks: [
-      { Id: 1, Title: 'Book Flight', URL: { Url: '#' }, IconClass: 'Airplane', Category: 'Booking', SortOrder: 1, OpenInNewTab: true },
-      { Id: 2, Title: 'Book Hotel', URL: { Url: '#' }, IconClass: 'CityNext', Category: 'Booking', SortOrder: 2, OpenInNewTab: true },
-      { Id: 3, Title: 'Rental Car', URL: { Url: '#' }, IconClass: 'Car', Category: 'Booking', SortOrder: 3, OpenInNewTab: true },
-      { Id: 4, Title: 'Travel Policies', URL: { Url: '#/policies' }, IconClass: 'Shield', Category: 'Policy', SortOrder: 4, OpenInNewTab: false },
-      { Id: 5, Title: 'User Guides', URL: { Url: '#/resources?type=Guide' }, IconClass: 'ReadingMode', Category: 'Support', SortOrder: 5, OpenInNewTab: false },
-      { Id: 6, Title: 'Travel Forms', URL: { Url: '#/resources?type=Form' }, IconClass: 'DocumentSet', Category: 'Support', SortOrder: 6, OpenInNewTab: false },
-      { Id: 7, Title: 'FAQs', URL: { Url: '#/faqs' }, IconClass: 'Help', Category: 'Support', SortOrder: 7, OpenInNewTab: false }
+      { Id: 1, Title: 'Business Travel', URL: { Url: '#/sap-concur' }, IconClass: 'Suitcase', Category: 'Booking', SortOrder: 1, OpenInNewTab: false },
+      { Id: 2, Title: 'Leisure Travel', URL: { Url: '#/leisure-travel' }, IconClass: 'Sunny', Category: 'Booking', SortOrder: 2, OpenInNewTab: false },
+      { Id: 3, Title: 'SAP Concur', URL: { Url: '#/sap-concur' }, IconClass: 'Devices3', Category: 'Support', SortOrder: 3, OpenInNewTab: false },
+      { Id: 4, Title: 'Travel Policy', URL: { Url: '#/policies' }, IconClass: 'DocumentApproval', Category: 'Policy', SortOrder: 4, OpenInNewTab: false },
+      { Id: 5, Title: 'Visa Support', URL: { Url: '#/visa-support' }, IconClass: 'ContactCard', Category: 'Support', SortOrder: 5, OpenInNewTab: false },
+      { Id: 6, Title: 'Relocation Travel', URL: { Url: '#/travel-care' }, IconClass: 'HomeGroup', Category: 'Support', SortOrder: 6, OpenInNewTab: false },
+      { Id: 7, Title: 'Expense Claims', URL: { Url: '#/sap-concur' }, IconClass: 'ReceiptForecast', Category: 'Expense', SortOrder: 7, OpenInNewTab: false },
+      { Id: 8, Title: 'Travel Insurance', URL: { Url: '#/travel-care' }, IconClass: 'Shield', Category: 'Policy', SortOrder: 8, OpenInNewTab: false },
+      { Id: 9, Title: 'Emergency Assistance – Travel Care', URL: { Url: '#/travel-care' }, IconClass: 'Headset', Category: 'Support', SortOrder: 9, OpenInNewTab: false },
+      { Id: 10, Title: 'Sustainability Green Travel', URL: { Url: '#/sustainability' }, IconClass: 'Flower', Category: 'Policy', SortOrder: 10, OpenInNewTab: false },
+      { Id: 11, Title: 'RSG Destination Hotels & Offers', URL: { Url: '#/leisure-travel' }, IconClass: 'CityNext', Category: 'Booking', SortOrder: 11, OpenInNewTab: false },
+      { Id: 12, Title: 'Wellness Beyond Office', URL: { Url: '#/wellness' }, IconClass: 'Health', Category: 'Support', SortOrder: 12, OpenInNewTab: false }
     ],
     TravelHubPageViews: [],
     TravelOffers: [
@@ -182,15 +190,15 @@ export function createMockStore(): IMockStore {
     ],
     TravelSustainabilityMetrics: [
       { Id: 1, Icon: 'CloudWeather', Value: '2,850 tCO₂', Label: 'CO₂ Offset (YTD)', DeltaLabel: '↑ 18% vs last year', SortOrder: 1 },
-      { Id: 2, Icon: 'Leaf', Value: '1,250', Label: 'Trees Planted', DeltaLabel: '↑ 22% vs last year', SortOrder: 2 },
+      { Id: 2, Icon: 'Flower', Value: '1,250', Label: 'Trees Planted', DeltaLabel: '↑ 22% vs last year', SortOrder: 2 },
       { Id: 3, Icon: 'DrillDown', Value: '3.6M', Label: 'Liters of Water Saved', DeltaLabel: '↑ 15% vs last year', SortOrder: 3 },
       { Id: 4, Icon: 'LightningBolt', Value: '4,200 kWh', Label: 'Energy Saved', DeltaLabel: '↑ 20% vs last year', SortOrder: 4 }
     ],
     TravelServicesTeam: [
-      { Id: 1, Name: 'Abrar Syed', Role: 'Manager, Travel Services', Email: 'abrar.syed@rsg.com', Phone: '+966 12 345 0000', SortOrder: 1 },
-      { Id: 2, Name: 'Elaf', Role: 'Specialist, Travel Services', Email: 'elaf@rsg.com', Phone: '+966 12 345 0000', SortOrder: 2 },
-      { Id: 3, Name: 'Sejid', Role: 'Specialist, Travel Services', Email: 'sejid@rsg.com', Phone: '+966 12 345 0000', SortOrder: 3 },
-      { Id: 4, Name: 'Salwa', Role: 'Coordinator, Travel Services', Email: 'salwa@rsg.com', Phone: '+966 12 345 0000', SortOrder: 4 }
+      { Id: 1, Name: 'Abrar Syed', Role: 'Manager, Travel Services', Department: 'Finance & Administration', Email: 'abrar.syed@rsg.com', Phone: '+966 12 345 0000', LinkedInUrl: 'https://www.linkedin.com/in/abrar-syed', SortOrder: 1 },
+      { Id: 2, Name: 'Elaf', Role: 'Specialist, Travel Services', Department: 'Finance & Administration', Email: 'elaf@rsg.com', Phone: '+966 12 345 0000', LinkedInUrl: 'https://www.linkedin.com/in/elaf', SortOrder: 2 },
+      { Id: 3, Name: 'Sejid', Role: 'Specialist, Travel Services', Department: 'Finance & Administration', Email: 'sejid@rsg.com', Phone: '+966 12 345 0000', LinkedInUrl: 'https://www.linkedin.com/in/sejid', SortOrder: 3 },
+      { Id: 4, Name: 'Salwa', Role: 'Coordinator, Travel Services', Department: 'Finance & Administration', Email: 'salwa@rsg.com', Phone: '+966 12 345 0000', LinkedInUrl: 'https://www.linkedin.com/in/salwa', SortOrder: 4 }
     ],
     TravelTestimonials: [
       { Id: 1, Quote: 'Seamless booking, clear policies and excellent support. Travel Services makes every trip stress-free.', Name: 'Ahmed Alghamdi', Role: 'Project Manager', SortOrder: 1 },
@@ -244,7 +252,7 @@ export const mockDashboardAnalytics: IDashboardAnalytics = {
   kpis: [
     { icon: 'Money', label: 'Total Spend', value: 'SAR 28.4M', compareLabel: 'vs Mar 1 – Mar 31, 2024', deltaLabel: '▲ 8.6%', deltaDirection: 'up' },
     { icon: 'Savings', label: 'Total Savings', value: 'SAR 3.7M', compareLabel: 'vs Mar 1 – Mar 31, 2024', deltaLabel: '▲ 12.4%', deltaDirection: 'up' },
-    { icon: 'Leaf', label: 'CO₂ Emissions Saved', value: '312 tCO₂e', compareLabel: 'vs Mar 1 – Mar 31, 2024', deltaLabel: '▲ 14.7%', deltaDirection: 'up' },
+    { icon: 'Flower', label: 'CO₂ Emissions Saved', value: '312 tCO₂e', compareLabel: 'vs Mar 1 – Mar 31, 2024', deltaLabel: '▲ 14.7%', deltaDirection: 'up' },
     { icon: 'Devices3', label: 'SAP Concur Adoption', value: '92%', compareLabel: 'vs Mar 1 – Mar 31, 2024', deltaLabel: '▲ 5 pp', deltaDirection: 'up' },
     { icon: 'FavoriteStar', label: 'Traveler Satisfaction', value: '4.6/5', compareLabel: 'vs Mar 1 – Mar 31, 2024', deltaLabel: '▲ 0.3', deltaDirection: 'up' }
   ],
@@ -294,7 +302,7 @@ export const mockDashboardAnalytics: IDashboardAnalytics = {
     { route: 'Jeddah – Riyadh', spend: 1.4, trips: 365, avgTicket: 980 }
   ],
   sustainabilityImpact: [
-    { icon: 'Leaf', value: '312 tCO₂e', label: 'Emissions Saved', deltaLabel: '▲ 14.7%' },
+    { icon: 'Flower', value: '312 tCO₂e', label: 'Emissions Saved', deltaLabel: '▲ 14.7%' },
     { icon: 'Tree', value: '1,248', label: 'Trees Equivalent Planted', deltaLabel: '▲ 8.2%' },
     { icon: 'Gas', value: '98,760 L', label: 'Fuel Saved', deltaLabel: '▲ 11.3%' },
     { icon: 'Recycling', value: '64%', label: 'Sustainable Hotels Booked', deltaLabel: '▲ 9 pp' }

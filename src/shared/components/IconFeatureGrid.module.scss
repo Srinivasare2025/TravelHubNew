@@ -80,3 +80,29 @@
     font-size: 15px;
   }
 }
+
+// Icon-left / title-right rows, no icon badge background (Home's Quick Access).
+.horizontal {
+  .tile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-align: left;
+    padding: 16px 18px;
+  }
+  .iconBadge {
+    width: auto;
+    height: auto;
+    margin: 0;
+    border-radius: 0;
+    background: none;
+    color: var(--th-accent-navy-light);
+    font-size: 26px;
+    flex-shrink: 0;
+  }
+  h4 {
+    margin: 0;
+    font-size: 13.5px;
+    color: var(--th-accent-navy-light);
+  }
+}

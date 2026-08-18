@@ -73,8 +73,8 @@ export const Hero: React.FC<IHeroProps> = ({
                     style={cta.accentColor ? { background: cta.accentColor, borderColor: cta.accentColor } : undefined}
                     onClick={() => runCta(cta)}
                   >
-                    {cta.icon && <Icon iconName={cta.icon} />}
-                    <span>{cta.label}</span>
+                    {cta.icon && <Icon iconName={cta.icon} className={styles.ctaIcon} />}
+                    <span className={styles.ctaLabel}>{cta.label}</span>
                     <Icon iconName="ChevronRightSmall" className={styles.ctaArrow} />
                   </button>
                 ))}

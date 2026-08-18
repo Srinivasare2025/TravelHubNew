@@ -1,45 +1,61 @@
+// Each stat is its own bordered card in a real grid (rather than one shared
+// strip with border-right + "last-child" dividers) — with 5+ stats that
+// wrap to a 2nd row, only the true last item lost its border under the old
+// approach, leaving a dangling right-hand border on every row-ending card.
 .strip {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 0;
-  background: var(--th-card-bg);
-  border: 1px solid var(--th-border);
-  border-radius: 14px;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
-  overflow: hidden;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 14px;
 }
 .plain {
-  background: transparent;
-  border: none;
-  box-shadow: none;
   gap: 18px;
 }
 
 .stat {
   text-align: center;
-  padding: 22px 12px;
-  border-right: 1px solid var(--th-border);
-
-  &:last-child {
-    border-right: none;
-  }
+  padding: 20px 14px;
+  background: var(--th-card-bg);
+  border: 1px solid var(--th-border);
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .plain .stat {
-  border-right: none;
+  background: transparent;
+  border: none;
+  box-shadow: none;
   padding: 12px;
 }
 
 .icon {
-  font-size: 20px;
+  font-size: 22px;
   color: var(--th-primary);
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   display: block;
+}
+// Fixed-height, centered label/delta bands (sized for 2 lines) so a short
+// label like "SLA Performance" and a long one like "Bookings Managed (YTD)"
+// both leave the number/indicator underneath starting at the same y — the
+// bug otherwise being that a 1-line label lets its card's content ride
+// higher than a neighboring card's 2-line label.
+.label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 33px;
+  font-size: 12px;
+  line-height: 1.35;
+  font-weight: 600;
+  color: var(--th-text-muted);
 }
 .value {
   font-family: Georgia, serif;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 700;
   color: var(--th-text);
+  margin-top: 6px;
 }
 .value.primary {
   color: var(--th-primary);
@@ -47,15 +63,15 @@
 .value.secondary {
   color: var(--th-secondary);
 }
-.label {
-  font-size: 11.5px;
-  color: var(--th-text-muted);
-  margin-top: 4px;
-}
 .delta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 29px;
   font-size: 11px;
+  line-height: 1.3;
   font-weight: 700;
-  margin-top: 6px;
+  margin-top: 8px;
 }
 .delta.up {
   color: #1e7e34;
@@ -67,8 +83,5 @@
 @media (max-width: 700px) {
   .strip {
     grid-template-columns: repeat(2, 1fr);
-  }
-  .stat {
-    border-bottom: 1px solid var(--th-border);
   }
 }

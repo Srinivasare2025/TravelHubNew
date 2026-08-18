@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useServiceContext } from '../../../../state/ServiceContext';
 import { useUserContext } from '../../../../state/UserContext';
 import { useThemeContext } from '../../../../state/ThemeContext';
-import { ThemePicker } from '../../../../shared/components';
+import { ThemePicker, DataSourcePicker } from '../../../../shared/components';
 import { brandMarkSvg } from '../../../../assets/images';
 import { ISearchResultItem, INotification } from '../../../../models';
 import styles from './Header.module.scss';
@@ -18,7 +18,7 @@ function timeAgo(dateStr: string): string {
 }
 
 export const Header: React.FC = () => {
-  const { service, config } = useServiceContext();
+  const { service, config, webAbsoluteUrl } = useServiceContext();
   const { user } = useUserContext();
   const { theme } = useThemeContext();
   const navigate = useNavigate();
@@ -55,6 +55,11 @@ export const Header: React.FC = () => {
   };
 
   const initials = user ? user.Title.split(' ').map((p) => p[0]).slice(0, 2).join('').toUpperCase() : '?';
+  // SharePoint's own user-photo endpoint — resolves the *real* signed-in
+  // user's photo on a live site. Against the local/mock user (an email that
+  // doesn't exist in the tenant) it 404s and Persona falls back to
+  // initials automatically, which is exactly the desired workbench behavior.
+  const photoUrl = user?.Email ? `${webAbsoluteUrl}/_layouts/15/userphoto.aspx?size=L&username=${encodeURIComponent(user.Email)}` : undefined;
   const orgName = config.organizationName || 'Red Sea Global';
   const [orgFirst, ...orgRest] = orgName.split(' ');
 
@@ -62,7 +67,7 @@ export const Header: React.FC = () => {
     <header className={styles.header}>
       <div className={styles.row1}>
         <a className={styles.brand} onClick={() => navigate('/')} role="button" tabIndex={0}>
-          <img className={styles.logo} src={brandMarkSvg(theme.palette.primary)} alt="" aria-hidden="true" />
+          <img className={styles.logo} src={config.logoUrl || brandMarkSvg(theme.palette.primary)} alt="" aria-hidden="true" />
           <span className={styles.brandText}>
             <span className={styles.org}>{orgFirst}</span>
             {orgRest.length > 0 && <span className={styles.product}>{orgRest.join(' ')}</span>}
@@ -93,6 +98,7 @@ export const Header: React.FC = () => {
         </div>
 
         <div className={styles.actions}>
+          <DataSourcePicker />
           <ThemePicker />
           <div ref={bellRef} className={styles.notifWrap}>
             <button type="button" className={styles.iconBtn} onClick={() => setNotifOpen(!notifOpen)} aria-label="Notifications">
@@ -115,7 +121,7 @@ export const Header: React.FC = () => {
             )}
           </div>
           <div className={styles.profile}>
-            <Persona text={user ? user.Title : 'Loading…'} size={PersonaSize.size32} imageInitials={initials} hidePersonaDetails />
+            <Persona text={user ? user.Title : 'Loading…'} size={PersonaSize.size32} imageUrl={photoUrl} imageInitials={initials} />
           </div>
         </div>
       </div>

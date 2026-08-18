@@ -9,7 +9,7 @@ import { ISustainabilityMetric } from '../../../../models';
 import styles from './SustainabilityPage.module.scss';
 
 const COMMITMENT = [
-  { icon: 'Leaf', accent: 'green' as const, title: 'Reduce', description: 'We aim to reduce our carbon footprint by making smarter travel choices and optimizing our resources.' },
+  { icon: 'Flower', accent: 'green' as const, title: 'Reduce', description: 'We aim to reduce our carbon footprint by making smarter travel choices and optimizing our resources.' },
   { icon: 'Refresh', accent: 'blue' as const, title: 'Responsible', description: 'We partner with suppliers who share our values and follow responsible and ethical practices.' },
   { icon: 'People', accent: 'bronze' as const, title: 'Support', description: 'We support local communities and contribute to the economic and social well-being of our destinations.' },
   { icon: 'Globe', accent: 'green' as const, title: 'Sustainable', description: 'We promote sustainable solutions and encourage our travelers to be part of the change.' }
@@ -38,7 +38,7 @@ export const SustainabilityPage: React.FC = () => {
         highlight="Travel today, protect tomorrow"
         description="We are committed to responsible travel that reduces our impact and supports a better future for generations to come."
         backgroundImageUrl={resortHeroPlaceholderImage(theme.palette.secondary, theme.palette.primary)}
-        media={<div className={styles.leafBadge}><Icon iconName="Leaf" /></div>}
+        media={<div className={styles.leafBadge}><Icon iconName="Flower" /></div>}
       />
 
       <div className={styles.body}>
@@ -65,7 +65,7 @@ export const SustainabilityPage: React.FC = () => {
 
         <CTABand
           variant="light"
-          icon="Leaf"
+          icon="Flower"
           title="Together, we can build a more sustainable future."
           description="Thank you for travelling responsibly with Red Sea Global."
           ctaLabel="Learn More About Our Initiatives"

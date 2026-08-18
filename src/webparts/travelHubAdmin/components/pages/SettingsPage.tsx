@@ -59,6 +59,7 @@ export const SettingsPage: React.FC<{ onToast: (msg: string, isError?: boolean) 
           />
           <TextField label="Organization Name" value={draft.organizationName} onChange={(_, v) => set('organizationName', v || '')} />
           <TextField label="Hero Banner Image URL" placeholder="Leave blank to use the built-in sample" value={draft.heroImageUrl} onChange={(_, v) => set('heroImageUrl', v || '')} />
+          <TextField label="Header Logo URL" placeholder="Leave blank to use the built-in generated mark" value={draft.logoUrl} onChange={(_, v) => set('logoUrl', v || '')} />
           <TextField label="Uploads Folder (server-relative)" placeholder="/sites/TravelHub/SiteAssets/travelhub/uploads" value={draft.uploadsFolderUrl} onChange={(_, v) => set('uploadsFolderUrl', v || '')} />
           <Dropdown
             label="Default Theme (site-wide — users can still override for themselves)"

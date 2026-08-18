@@ -2,8 +2,13 @@
   padding-top: 0;
 }
 
+// 64px here was leftover from the shared inner-page pattern (clearance for
+// Hero's absolutely-positioned `infoStrip` overlap card) — Home's Hero
+// doesn't use `infoStrip`, so that much clearance was pure dead space
+// stacking on top of Hero's own bottom padding and the first section
+// heading's own top margin.
 .body {
-  padding-top: 64px;
+  padding-top: 20px;
 }
 
 .plainHeading {
@@ -32,10 +37,14 @@
 }
 .infoCol {
   position: relative;
-  background: var(--th-card-bg);
+  display: flex;
+  align-items: stretch;
+  gap: 14px;
+  background: rgba(4, 37, 60, 0.035);
   border: 1px solid var(--th-border);
   border-radius: 14px;
   padding: 20px 22px 46px;
+  overflow: hidden;
   cursor: pointer;
   transition: transform 0.18s ease, box-shadow 0.18s ease;
 
@@ -59,6 +68,28 @@
       color: var(--th-primary);
       margin-right: 8px;
     }
+  }
+
+  @media (max-width: 520px) {
+    flex-direction: column;
+  }
+}
+.infoLeft {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.infoImage {
+  flex: 0 0 34%;
+  align-self: stretch;
+  border-radius: 10px;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+
+  @media (max-width: 520px) {
+    flex-basis: auto;
+    align-self: auto;
+    height: 140px;
   }
 }
 .infoHeader {
@@ -87,20 +118,37 @@
   color: var(--th-secondary);
 }
 
-// ---- Promo 3-panel row ----
+// ---- Promo 4-panel row (SAP Concur Hub / Green Travel / RSG Hotels / News) ----
 .promoRow {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 16px;
   margin-top: 30px;
+  align-items: stretch;
 
-  @media (max-width: 900px) {
+  @media (max-width: 1180px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 620px) {
     grid-template-columns: 1fr;
   }
 }
 .promoCard {
+  // Grid/flex items default to `min-width: auto`, i.e. "never shrink below
+  // my content's own natural width" — without overriding that, a card
+  // whose content wants to be wider than its 1fr share (e.g. the news
+  // list's non-wrapping date, or a long bullet) forces that whole column
+  // wider than its neighbors, which is what was reading as "overlapping
+  // text/image" and "the last card stays a fixed width while the others
+  // resize": every one of these 4 columns was fighting its own content
+  // instead of actually sharing the row equally.
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
   border-radius: 14px;
   padding: 22px 24px;
+  background-size: cover;
+  background-position: center;
 
   h4 {
     margin: 0 0 4px;
@@ -136,10 +184,11 @@
     font-weight: 700;
     cursor: pointer;
     font-family: inherit;
+    align-self: flex-start;
+    margin-top: auto;
   }
 }
 .promoDark {
-  background: var(--th-secondary);
   color: #fff;
 
   li i {
@@ -150,7 +199,7 @@
   }
 }
 .promoLight {
-  background: rgba(47, 111, 79, 0.06);
+  background-color: rgba(47, 111, 79, 0.06);
   border: 1px solid rgba(47, 111, 79, 0.18);
   color: var(--th-text);
 
@@ -166,7 +215,7 @@
   }
 }
 .promoTan {
-  background: rgba(169, 124, 63, 0.08);
+  background-color: rgba(169, 124, 63, 0.08);
   border: 1px solid rgba(169, 124, 63, 0.2);
   color: var(--th-text);
 
@@ -182,40 +231,107 @@
   }
 }
 
-// ---- News list ----
+// Left content 70% / right image 30% by default — override per-instance with
+// style={{ '--promo-split': '65% 35%' }} if a card ever needs a different ratio.
+.promoSplit {
+  display: grid;
+  grid-template-columns: var(--promo-split, 70% 30%);
+  gap: 16px;
+  align-items: stretch;
+  flex: 1;
+  min-width: 0;
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
+}
+.promoContent {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.promoImage {
+  min-height: 120px;
+  border-radius: 10px;
+  background-size: cover;
+  background-position: center;
+}
+
+// ---- Travel News & Updates (4th card in the promo row) ----
+.promoNews {
+  background: var(--th-card-bg);
+  border: 1px solid var(--th-border);
+}
+.promoNewsHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+
+  h4 {
+    margin: 0;
+    color: var(--th-primary);
+  }
+  button {
+    display: inline-flex;
+    align-items: center;
+    align-self: auto;
+    gap: 4px;
+    background: none;
+    border: none;
+    padding: 0;
+    margin-top: 0;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--th-primary);
+    cursor: pointer;
+    font-family: inherit;
+  }
+}
+
+// ---- News list (used both standalone-style inside promoNews) ----
 .newsList {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 .newsItem {
   display: flex;
-  gap: 14px;
-  background: var(--th-card-bg);
-  border: 1px solid var(--th-border);
-  border-radius: 12px;
-  padding: 12px;
+  gap: 10px;
   align-items: center;
+}
+.newsBody {
+  flex: 1;
+  min-width: 0;
 
   h5 {
-    margin: 0 0 3px;
-    font-size: 13.5px;
+    margin: 0 0 2px;
+    font-size: 12.5px;
     color: var(--th-text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   p {
-    margin: 0 0 4px;
-    font-size: 12px;
-    color: var(--th-text-muted);
-  }
-  span {
+    margin: 0;
     font-size: 11px;
     color: var(--th-text-muted);
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 }
+.newsDate {
+  flex-shrink: 0;
+  font-size: 10.5px;
+  color: var(--th-text-muted);
+  white-space: nowrap;
+}
 .newsThumb {
-  width: 64px;
-  height: 64px;
-  border-radius: 10px;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
   background-size: cover;
   background-position: center;
   flex-shrink: 0;
@@ -230,47 +346,81 @@
   @media (max-width: 860px) {
     grid-template-columns: repeat(2, 1fr);
   }
+  @media (max-width: 500px) {
+    grid-template-columns: 1fr;
+  }
 }
 .teamCard {
+  display: flex;
+  align-items: stretch;
+  gap: 14px;
+  min-height: 120px;
   background: var(--th-card-bg);
   border: 1px solid var(--th-border);
   border-radius: 14px;
-  padding: 18px;
-  text-align: center;
+  padding: 14px;
+  text-align: left;
+}
+.teamInfo {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   h5 {
-    margin: 4px 0 2px;
+    margin: 0 0 2px;
     font-size: 13.5px;
   }
   p {
-    margin: 0 0 10px;
+    margin: 0;
     font-size: 11.5px;
     color: var(--th-text-muted);
   }
 }
+.teamDept {
+  opacity: 0.8;
+}
+// Rounded rectangle (all 4 corners), not a circle avatar — a standalone
+// tile inset inside the card's own padding (not bled to the card edges),
+// sized by a 4:5 (portrait) aspect ratio against however tall the row
+// naturally is (`.teamCard`'s min-height keeps that generous), so the
+// photo always fills the card's full height while staying proportionate.
 .teamPhoto {
-  width: 74px;
-  height: 74px;
-  border-radius: 50%;
+  flex: 0 0 auto;
+  aspect-ratio: 4 / 5;
+  align-self: stretch;
+  border-radius: 12px;
   background-size: cover;
   background-position: center;
-  margin: 0 auto 6px;
+}
+
+@media (max-width: 340px) {
+  .teamCard {
+    flex-direction: column;
+  }
+  .teamPhoto {
+    aspect-ratio: auto;
+    align-self: auto;
+    width: 100%;
+    height: 140px;
+  }
 }
 .teamIcons {
   display: flex;
-  justify-content: center;
   gap: 8px;
+  margin-top: 8px;
 
   a {
-    width: 28px;
-    height: 28px;
+    width: 26px;
+    height: 26px;
     border-radius: 50%;
     background: rgba(4, 37, 60, 0.06);
     color: var(--th-secondary);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 12px;
+    font-size: 11px;
   }
 }
 
@@ -281,10 +431,12 @@
   color: #fff;
   border-radius: 16px;
   padding: 26px 30px;
-  display: grid;
-  grid-template-columns: 1fr 1.4fr 1fr auto;
-  gap: 24px;
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  gap: 22px 30px;
+  max-width: 100%;
+  box-sizing: border-box;
 
   h3 {
     font-family: Georgia, serif;
@@ -292,8 +444,9 @@
     margin: 0;
   }
 
-  @media (max-width: 980px) {
-    grid-template-columns: 1fr;
+  > * {
+    flex: 1 1 230px;
+    min-width: 0;
   }
 }
 .richContacts {
@@ -307,7 +460,7 @@
     align-items: flex-start;
 
     i {
-      color: var(--th-primary);
+      color: #fff;
       margin-top: 2px;
     }
     strong {
@@ -323,27 +476,33 @@
       font-size: 12px;
       font-weight: 700;
       color: var(--th-primary);
+      white-space: nowrap;
     }
   }
 }
 .richList {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 4px;
   font-size: 12px;
 
   div {
     display: flex;
     align-items: center;
     gap: 8px;
+    white-space: nowrap;
   }
   i {
-    color: var(--th-primary);
+    color: #fff;
   }
   b {
-    margin-left: auto;
     font-weight: 700;
   }
+}
+.richPipe {
+  opacity: 0.4;
+  padding: 0 4px;
 }
 .richBadge {
   display: flex;
@@ -355,7 +514,7 @@
 
   i {
     font-size: 26px;
-    color: var(--th-primary);
+    color: #fff;
     flex-shrink: 0;
   }
   p {
