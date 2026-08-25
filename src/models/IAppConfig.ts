@@ -15,6 +15,7 @@ export interface IListNameConfig {
   sustainabilityMetrics: string;
   team: string;
   testimonials: string;
+  heroImages: string;
 }
 
 export const DEFAULT_LIST_NAMES: IListNameConfig = {
@@ -30,7 +31,8 @@ export const DEFAULT_LIST_NAMES: IListNameConfig = {
   cateringMenus: 'TravelCateringMenus',
   sustainabilityMetrics: 'TravelSustainabilityMetrics',
   team: 'TravelServicesTeam',
-  testimonials: 'TravelTestimonials'
+  testimonials: 'TravelTestimonials',
+  heroImages: 'TravelHeroImages'
 };
 
 export interface IGroupNameConfig {
@@ -74,6 +76,6 @@ export const DEFAULT_APP_CONFIG: IAppConfig = {
   uploadsFolderUrl: '',
   heroImageUrl: '',
   logoUrl: '',
-  defaultTheme: 'goldNavy',
+  defaultTheme: 'sky',
   organizationName: 'Red Sea Global'
 };

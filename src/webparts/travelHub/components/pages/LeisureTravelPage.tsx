@@ -2,10 +2,10 @@ import * as React from 'react';
 import { Icon } from '@fluentui/react';
 import { useNavigate } from 'react-router-dom';
 import { useServiceContext } from '../../../../state/ServiceContext';
-import { useThemeContext } from '../../../../state/ThemeContext';
 import { Hero, OfferCard, IconFeatureGrid, SectionHeading, CTABand, LoadingSpinner } from '../../../../shared/components';
 import { resortHeroPlaceholderImage, cardPlaceholderImage, photoPlaceholderImage } from '../../../../assets/images';
 import { IOffer } from '../../../../models';
+import { FIXED_PALETTE } from '../../../../theme/themes';
 import styles from './LeisureTravelPage.module.scss';
 
 const CATEGORIES = [
@@ -21,7 +21,6 @@ const DESTINATIONS = ['Jeddah', 'AlUla', 'Dubai', 'Abha', 'Maldives', 'Istanbul'
 
 export const LeisureTravelPage: React.FC = () => {
   const { service } = useServiceContext();
-  const { theme } = useThemeContext();
   const navigate = useNavigate();
   const [offers, setOffers] = React.useState<IOffer[] | undefined>(undefined);
 
@@ -39,7 +38,7 @@ export const LeisureTravelPage: React.FC = () => {
         title="Leisure Travel"
         highlight="RSG Destination Hotels & Offers"
         description="Exclusive travel benefits for you and your family. Explore destinations, offers and experiences handpicked for our RSG family."
-        backgroundImageUrl={resortHeroPlaceholderImage(theme.palette.secondary, theme.palette.primary)}
+        backgroundImageUrl={resortHeroPlaceholderImage(FIXED_PALETTE.secondary, FIXED_PALETTE.primary)}
         infoStrip={(
           <div className={styles.benefitRow}>
             <div><Icon iconName="Tag" /><div><strong>Exclusive Employee Rates</strong><span>Special rates at premium hotels</span></div></div>
@@ -73,7 +72,7 @@ export const LeisureTravelPage: React.FC = () => {
               title={o.Title}
               subtitle={o.Location}
               description={o.Description}
-              imageUrl={o.Image?.Url || cardPlaceholderImage(theme.palette.primary, theme.palette.secondary, 'promo')}
+              imageUrl={o.Image?.Url || cardPlaceholderImage(FIXED_PALETTE.primary, FIXED_PALETTE.secondary, 'promo')}
               badge={o.Badge}
               badgeVariant={o.BadgeVariant}
               price={o.Price}
@@ -97,7 +96,7 @@ export const LeisureTravelPage: React.FC = () => {
         <SectionHeading title="Popular Destinations" viewAllLabel="See all destinations" onViewAllClick={() => navigate('/leisure-travel')} />
         <div className={styles.destGrid}>
           {DESTINATIONS.map((d) => (
-            <div key={d} className={styles.destTile} style={{ backgroundImage: `url('${photoPlaceholderImage(d, theme.palette.primary, theme.palette.secondary)}')` }}>
+            <div key={d} className={styles.destTile} style={{ backgroundImage: `url('${photoPlaceholderImage(d, FIXED_PALETTE.primary, FIXED_PALETTE.secondary)}')` }}>
               <span>{d}</span>
             </div>
           ))}

@@ -1,4 +1,4 @@
-/* tslint:disable */
+
 require("./BarChart.module.css");
 const styles = {
   legend: 'legend_1ef16f3a',
@@ -11,4 +11,3 @@ const styles = {
 };
 
 export default styles;
-/* tslint:enable */

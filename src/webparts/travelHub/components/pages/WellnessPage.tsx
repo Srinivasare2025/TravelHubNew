@@ -2,10 +2,10 @@ import * as React from 'react';
 import { Icon } from '@fluentui/react';
 import { useNavigate } from 'react-router-dom';
 import { useServiceContext } from '../../../../state/ServiceContext';
-import { useThemeContext } from '../../../../state/ThemeContext';
 import { Hero, IconFeatureGrid, OfferCard, SectionHeading, CTABand, LoadingSpinner } from '../../../../shared/components';
 import { resortHeroPlaceholderImage, cardPlaceholderImage } from '../../../../assets/images';
 import { IOffer } from '../../../../models';
+import { FIXED_PALETTE } from '../../../../theme/themes';
 import styles from './WellnessPage.module.scss';
 
 const PILLARS = [
@@ -35,7 +35,6 @@ const BENEFITS = [
 
 export const WellnessPage: React.FC = () => {
   const { service } = useServiceContext();
-  const { theme } = useThemeContext();
   const navigate = useNavigate();
   const [offers, setOffers] = React.useState<IOffer[] | undefined>(undefined);
 
@@ -52,7 +51,7 @@ export const WellnessPage: React.FC = () => {
       key={o.Id}
       title={o.Title}
       description={o.Description}
-      imageUrl={o.Image?.Url || cardPlaceholderImage(theme.palette.primary, theme.palette.secondary, 'exclusive')}
+      imageUrl={o.Image?.Url || cardPlaceholderImage(FIXED_PALETTE.primary, FIXED_PALETTE.secondary, 'exclusive')}
       badge={o.Badge}
       badgeVariant={o.BadgeVariant}
       price={o.Price}
@@ -67,7 +66,7 @@ export const WellnessPage: React.FC = () => {
         title="Wellness Beyond Office"
         highlight="Recharge. Reconnect. Perform Better."
         description="A holistic wellbeing initiative by Travel Services – F&A in partnership with premium hotels and destinations. Exclusive experiences for a healthier you and your family."
-        backgroundImageUrl={resortHeroPlaceholderImage(theme.palette.primary, theme.palette.secondary)}
+        backgroundImageUrl={resortHeroPlaceholderImage(FIXED_PALETTE.primary, FIXED_PALETTE.secondary)}
         media={<div className={styles.wellBadge}><Icon iconName="Flower" /><span>Wellbeing today for a better tomorrow</span></div>}
         infoStrip={(
           <div className={styles.benefitRow}>

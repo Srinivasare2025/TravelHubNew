@@ -37,6 +37,6 @@ export class ThemeService {
 
   public resolveEffectiveTheme(siteDefault: ThemeKey): ThemeKey {
     const override = this.getPersonalOverride();
-    return override ?? siteDefault ?? 'goldNavy';
+    return override ?? siteDefault ?? 'sky';
   }
 }

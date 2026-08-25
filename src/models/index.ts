@@ -17,3 +17,4 @@ export * from './ISustainabilityMetric';
 export * from './ITeamMember';
 export * from './ITestimonial';
 export * from './IDashboardAnalytics';
+export * from './IHeroSlide';

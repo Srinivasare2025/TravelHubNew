@@ -18,6 +18,9 @@ const CHROME_SELECTORS = [
   '[data-automationid="SiteHeader"]',
   '#spLeftNav',
   '.spAppBar',
+  // The modern left-rail App Bar's real id on current tenants — `.spAppBar` above didn't
+  // match it (class vs. id), which is why it kept reserving space on the left edge.
+  '#sp-appBar',
   '#spCommandBar',
   '[data-automation-id="pageCommandBar"]',
   '[data-automation-id="pageHeader"]',

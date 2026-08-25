@@ -1,6 +1,7 @@
 import {
   IPolicy, IGuide, IForm, IFaq, IPromotion, INewsItem, IQuickLink, ModerationStatus, IPageViewEvent,
-  IOffer, ICateringMenu, ISustainabilityMetric, ITeamMember, ITestimonial, ISapConcurInfo, IDashboardAnalytics
+  IOffer, ICateringMenu, ISustainabilityMetric, ITeamMember, ITestimonial, ISapConcurInfo, IDashboardAnalytics,
+  IHeroSlide
 } from '../../models';
 
 /** Seed dates relative to "now" so the mock never silently goes stale. */
@@ -22,6 +23,7 @@ export interface IMockStore {
   TravelSustainabilityMetrics: ISustainabilityMetric[];
   TravelServicesTeam: ITeamMember[];
   TravelTestimonials: ITestimonial[];
+  TravelHeroImages: IHeroSlide[];
   [key: string]: unknown[];
 }
 
@@ -204,6 +206,29 @@ export function createMockStore(): IMockStore {
       { Id: 1, Quote: 'Seamless booking, clear policies and excellent support. Travel Services makes every trip stress-free.', Name: 'Ahmed Alghamdi', Role: 'Project Manager', SortOrder: 1 },
       { Id: 2, Quote: 'The Travel Care team is incredible. They are always there when you need them most.', Name: 'Sarah Khan', Role: 'Regional Director', SortOrder: 2 },
       { Id: 3, Quote: 'Wellness Beyond Office offers are fantastic! A perfect way to recharge and spend quality time with family.', Name: 'Fahad Alotaibi', Role: 'Senior Engineer', SortOrder: 3 }
+    ],
+    // Deliberately mixes an 'all'-targeted slide with page-specific ones so both
+    // fallback paths (untargeted pages, and pages with their own configured set)
+    // are exercised in the local workbench without extra setup.
+    TravelHeroImages: [
+      {
+        Id: 1, Title: 'Your Partner in Every Journey', Eyebrow: 'Welcome to', Highlight: 'Travel Services – F&A',
+        Description: 'Your one-stop hub for business and leisure travel — guidance, tools, policies and support.',
+        CtaLabel: 'Explore Travel Services', CtaUrl: { Url: '#/sap-concur' },
+        TargetPages: { results: ['home'] }, SortOrder: 1, IsActive: true
+      },
+      {
+        Id: 2, Title: 'Exclusive Rates, Unforgettable Stays', Eyebrow: 'RSG Destination Hotels', Highlight: 'Leisure Travel Offers',
+        Description: 'Special employee rates at premium RSG destinations for you and your family.',
+        CtaLabel: 'View Offers', CtaUrl: { Url: '#/leisure-travel' },
+        TargetPages: { results: ['home'] }, SortOrder: 2, IsActive: true
+      },
+      {
+        Id: 3, Title: 'We Are With You, Every Step', Eyebrow: '24/7 Travel Care', Highlight: 'Always Here to Help',
+        Description: 'Emergency assistance, real support, whenever and wherever you need it.',
+        CtaLabel: 'Contact Travel Care', CtaUrl: { Url: '#/travel-care' },
+        TargetPages: { results: ['all'] }, SortOrder: 3, IsActive: true
+      }
     ]
   };
 

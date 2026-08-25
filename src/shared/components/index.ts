@@ -9,6 +9,7 @@ export * from './DataSourcePicker';
 export * from './ContentCard';
 export * from './Toast';
 export * from './Hero';
+export * from './HeroCarousel';
 export * from './IconFeatureGrid';
 export * from './StatStrip';
 export * from './OfferCard';

@@ -12,7 +12,7 @@
 }
 
 .plainHeading {
-  font-family: Georgia, serif;
+  font-family: var(--font-display);
   font-size: 19px;
   color: var(--th-primary);
   margin: 34px 0 14px;
@@ -104,10 +104,14 @@
     font-size: 14.5px;
   }
 }
+// Centered on the seam between .infoLeft and .infoImage (which is flex:
+// 0 0 34%, so the boundary sits 34% in from the card's right edge) instead
+// of the card's bottom-right corner, so it reads as "between" the two
+// halves rather than floating on top of the image.
 .infoArrow {
   position: absolute;
   bottom: 16px;
-  right: 18px;
+  right: calc(34% - 14px);
   width: 28px;
   height: 28px;
   border-radius: 50%;
@@ -116,6 +120,12 @@
   align-items: center;
   justify-content: center;
   color: var(--th-secondary);
+
+  // Left/right no longer means anything once .infoCol stacks vertically —
+  // back to a plain corner badge there.
+  @media (max-width: 520px) {
+    right: 18px;
+  }
 }
 
 // ---- Promo 4-panel row (SAP Concur Hub / Green Travel / RSG Hotels / News) ----
@@ -152,7 +162,7 @@
 
   h4 {
     margin: 0 0 4px;
-    font-family: Georgia, serif;
+    font-family: var(--font-display);
     font-size: 16px;
   }
   p {
@@ -249,6 +259,16 @@
   display: flex;
   flex-direction: column;
   min-width: 0;
+  // Green Travel (5 list items) and RSG Destination Hotels & Offers (3) are
+  // grid auto-placed into *different* rows once .promoRow drops to 2
+  // columns (Green Travel pairs with SAP Concur Hub, RSG pairs with Travel
+  // News & Updates) — each row's `align-items: stretch` only equalizes
+  // height *within that row*, so the two content-driven promoSplit cards
+  // still end up different heights (and so do their .promoImage panels,
+  // which stretch to match) even though each individually "stretches
+  // correctly." A shared min-height sized to the longer (5-item) card
+  // closes that gap regardless of which row either one lands in.
+  min-height: 260px;
 }
 .promoImage {
   min-height: 120px;
@@ -424,74 +444,72 @@
   }
 }
 
-// ---- Rich 24/7 band ----
+// ---- Rich 24/7 band — 4 explicit grid columns (title+Emergency Travel /
+// ATS Hotline / the 3 emergency numbers / safety message), auto-fitting
+// down to 2 then 1 column by screen size. ----
 .richBand {
   margin-top: 34px;
   background: linear-gradient(120deg, var(--th-secondary), #06304f);
   color: #fff;
   border-radius: 16px;
   padding: 26px 30px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 22px 30px;
-  max-width: 100%;
   box-sizing: border-box;
 
   h3 {
-    font-family: Georgia, serif;
+    font-family: var(--font-display);
     font-size: 18px;
-    margin: 0;
+    margin: 0 0 14px;
   }
 
   > * {
-    flex: 1 1 230px;
     min-width: 0;
   }
+
+  @media (max-width: 980px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 560px) {
+    grid-template-columns: 1fr;
+  }
 }
-.richContacts {
+.richContact {
   display: flex;
-  flex-direction: column;
-  gap: 14px;
+  gap: 10px;
+  align-items: flex-start;
 
-  > div {
-    display: flex;
-    gap: 10px;
-    align-items: flex-start;
-
-    i {
-      color: #fff;
-      margin-top: 2px;
-    }
-    strong {
-      display: block;
-      font-size: 12.5px;
-    }
-    p {
-      margin: 2px 0;
-      font-size: 11px;
-      opacity: 0.8;
-    }
-    span {
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--th-primary);
-      white-space: nowrap;
-    }
+  i {
+    color: #fff;
+    margin-top: 2px;
+  }
+  strong {
+    display: block;
+    font-size: 12.5px;
+  }
+  p {
+    margin: 2px 0;
+    font-size: 11px;
+    opacity: 0.8;
+  }
+  span {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--th-primary);
+    white-space: nowrap;
   }
 }
 .richList {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px 4px;
+  flex-direction: column;
+  gap: 8px;
   font-size: 12px;
 
   div {
     display: flex;
     align-items: center;
     gap: 8px;
-    white-space: nowrap;
   }
   i {
     color: #fff;
@@ -500,9 +518,9 @@
     font-weight: 700;
   }
 }
-.richPipe {
-  opacity: 0.4;
-  padding: 0 4px;
+.richDivider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.18);
 }
 .richBadge {
   display: flex;

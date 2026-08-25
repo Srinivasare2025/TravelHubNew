@@ -1,4 +1,4 @@
-/* tslint:disable */
+
 require("./Breadcrumb.module.css");
 const styles = {
   breadcrumb: 'breadcrumb_57769db4',
@@ -8,4 +8,3 @@ const styles = {
 };
 
 export default styles;
-/* tslint:enable */

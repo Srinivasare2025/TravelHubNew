@@ -1,4 +1,4 @@
-/* tslint:disable */
+
 require("./LinkCardGrid.module.css");
 const styles = {
   grid: 'grid_26b7afe6',
@@ -9,4 +9,3 @@ const styles = {
 };
 
 export default styles;
-/* tslint:enable */

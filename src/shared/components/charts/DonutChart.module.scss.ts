@@ -1,4 +1,4 @@
-/* tslint:disable */
+
 require("./DonutChart.module.css");
 const styles = {
   wrap: 'wrap_5d8c571e',
@@ -6,4 +6,3 @@ const styles = {
 };
 
 export default styles;
-/* tslint:enable */

@@ -2,10 +2,10 @@ import * as React from 'react';
 import { Icon } from '@fluentui/react';
 import { useNavigate } from 'react-router-dom';
 import { useServiceContext } from '../../../../state/ServiceContext';
-import { useThemeContext } from '../../../../state/ThemeContext';
 import { Hero, StatStrip, IconFeatureGrid, SectionHeading, CTABand, LoadingSpinner } from '../../../../shared/components';
 import { heroPlaceholderImage, photoPlaceholderImage } from '../../../../assets/images';
 import { IOffer } from '../../../../models';
+import { FIXED_PALETTE } from '../../../../theme/themes';
 import styles from './MeetingsEventsPage.module.scss';
 
 const WE_HELP = ['Venue selection', 'Accommodation & travel', 'F&B & catering', 'AV & technical support', 'Event planning & coordination', 'Delegate management', 'On-site support'];
@@ -29,7 +29,6 @@ const WHY_US = [
 
 export const MeetingsEventsPage: React.FC = () => {
   const { service } = useServiceContext();
-  const { theme } = useThemeContext();
   const navigate = useNavigate();
   const [hotels, setHotels] = React.useState<IOffer[] | undefined>(undefined);
   const [cityFilter, setCityFilter] = React.useState('All Cities');
@@ -55,7 +54,7 @@ export const MeetingsEventsPage: React.FC = () => {
         title="Meetings, Events & Conferences"
         highlight="Inspiring venues. Seamless experiences."
         description="End-to-end support for all your corporate meetings, events and conferences with our trusted hotel partners worldwide."
-        backgroundImageUrl={heroPlaceholderImage(theme.palette.secondary, theme.palette.primary)}
+        backgroundImageUrl={heroPlaceholderImage(FIXED_PALETTE.secondary, FIXED_PALETTE.primary)}
         media={(
           <div className={styles.helpPanel}>
             <h5>We help you with</h5>
@@ -97,7 +96,7 @@ export const MeetingsEventsPage: React.FC = () => {
             <SectionHeading title={city} viewAllLabel={`View all ${city} hotels`} />
             <div className={styles.hotelGrid}>
               {grouped[city].map((h) => (
-                <div key={h.Id} className={styles.hotelTile} style={{ backgroundImage: `url('${photoPlaceholderImage(h.Title, theme.palette.primary, theme.palette.secondary)}')` }}>
+                <div key={h.Id} className={styles.hotelTile} style={{ backgroundImage: `url('${photoPlaceholderImage(h.Title, FIXED_PALETTE.primary, FIXED_PALETTE.secondary)}')` }}>
                   <span>{h.Title}</span>
                 </div>
               ))}
@@ -108,7 +107,7 @@ export const MeetingsEventsPage: React.FC = () => {
         <h2 className={styles.sectionTitle}>Our International Hotel Partners</h2>
         <div className={styles.intlGrid}>
           {INTERNATIONAL.map((c) => (
-            <div key={c.city} className={styles.intlTile} style={{ backgroundImage: `url('${photoPlaceholderImage(c.city, theme.palette.secondary, theme.palette.primary)}')` }}>
+            <div key={c.city} className={styles.intlTile} style={{ backgroundImage: `url('${photoPlaceholderImage(c.city, FIXED_PALETTE.secondary, FIXED_PALETTE.primary)}')` }}>
               <div><strong>{c.city}</strong><p>{c.tag}</p><a>View Hotels <Icon iconName="ChevronRightSmall" /></a></div>
             </div>
           ))}

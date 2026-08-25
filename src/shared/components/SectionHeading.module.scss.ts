@@ -1,9 +1,8 @@
-/* tslint:disable */
+
 require("./SectionHeading.module.css");
 const styles = {
-  heading: 'heading_03c4733a',
-  subtitle: 'subtitle_03c4733a'
+  heading: 'heading_1a4d2127',
+  subtitle: 'subtitle_1a4d2127'
 };
 
 export default styles;
-/* tslint:enable */

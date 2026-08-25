@@ -42,7 +42,8 @@ import {
   ITeamMember,
   ITestimonial,
   IDashboardAnalytics,
-  IDashboardFilters
+  IDashboardFilters,
+  IHeroSlide
 } from '../models';
 import { mockSapConcurInfo, mockDashboardAnalytics } from './mocks/mockData';
 
@@ -218,6 +219,21 @@ export class SharePointService implements ISharePointService {
 
   public async getTestimonials(): Promise<ITestimonial[]> {
     return this.sp.web.lists.getByTitle(this.config.lists.testimonials).items.orderBy('SortOrder', true).top(50)() as Promise<ITestimonial[]>;
+  }
+
+  /**
+   * `TargetPages` is a multi-choice field — SharePoint REST doesn't offer a clean
+   * `$filter` for "contains one of these values", so IsActive/SortOrder are filtered
+   * server-side and the per-page match is done client-side here, same approach the
+   * mock implementation uses (kept in step so both behave identically).
+   */
+  public async getHeroImages(pageKey?: string): Promise<IHeroSlide[]> {
+    const rows = await this.sp.web.lists.getByTitle(this.config.lists.heroImages).items
+      .filter('IsActive eq 1')
+      .orderBy('SortOrder', true)
+      .top(50)() as IHeroSlide[];
+    if (!pageKey) return rows;
+    return rows.filter((r) => r.TargetPages?.results?.includes(pageKey) || r.TargetPages?.results?.includes('all'));
   }
 
   /**

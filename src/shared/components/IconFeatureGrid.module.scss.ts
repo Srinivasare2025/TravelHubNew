@@ -1,4 +1,4 @@
-/* tslint:disable */
+
 require("./IconFeatureGrid.module.css");
 const styles = {
   grid: 'grid_4a2cc650',
@@ -10,4 +10,3 @@ const styles = {
 };
 
 export default styles;
-/* tslint:enable */

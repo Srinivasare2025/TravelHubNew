@@ -1,4 +1,4 @@
-/* tslint:disable */
+
 require("./Toast.module.css");
 const styles = {
   host: 'host_4dadf291',
@@ -8,4 +8,3 @@ const styles = {
 };
 
 export default styles;
-/* tslint:enable */

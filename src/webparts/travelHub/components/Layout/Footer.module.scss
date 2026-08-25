@@ -46,3 +46,20 @@
     align-items: flex-start;
   }
 }
+
+.altHomeRow {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px 18px;
+  text-align: center;
+}
+.altHomeLink {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--th-primary);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

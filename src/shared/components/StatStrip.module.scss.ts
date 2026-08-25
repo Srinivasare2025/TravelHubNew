@@ -1,18 +1,17 @@
-/* tslint:disable */
+
 require("./StatStrip.module.css");
 const styles = {
-  strip: 'strip_b709ecbc',
-  plain: 'plain_b709ecbc',
-  stat: 'stat_b709ecbc',
-  icon: 'icon_b709ecbc',
-  label: 'label_b709ecbc',
-  value: 'value_b709ecbc',
-  primary: 'primary_b709ecbc',
-  secondary: 'secondary_b709ecbc',
-  delta: 'delta_b709ecbc',
-  up: 'up_b709ecbc',
-  down: 'down_b709ecbc'
+  strip: 'strip_9d5476ba',
+  plain: 'plain_9d5476ba',
+  stat: 'stat_9d5476ba',
+  icon: 'icon_9d5476ba',
+  label: 'label_9d5476ba',
+  value: 'value_9d5476ba',
+  primary: 'primary_9d5476ba',
+  secondary: 'secondary_9d5476ba',
+  delta: 'delta_9d5476ba',
+  up: 'up_9d5476ba',
+  down: 'down_9d5476ba'
 };
 
 export default styles;
-/* tslint:enable */

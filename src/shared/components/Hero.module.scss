@@ -44,7 +44,7 @@
   }
 
   h1 {
-    font-family: Georgia, 'Iowan Old Style', serif;
+    font-family: var(--font-display);
     font-size: 38px;
     line-height: 1.15;
     margin: 0 0 8px;
@@ -81,8 +81,17 @@
   margin-top: 22px;
 }
 
+// Mostly-solid buttons (~90% opaque) so the label/icon always read clearly —
+// just enough transparency for the hero photo to show through a little,
+// not a heavy frosted-glass look. `.ctaSolid`'s background is the button's
+// accentColor (via --cta-accent, set in Hero.tsx) mixed to that opacity, so
+// it still reads as "the navy button" / "the teal button" etc., same as
+// before this treatment existed — just not fully opaque. `::before` is a
+// subtle sheen: a soft diagonal highlight parked off-button at rest that
+// sweeps across on hover/focus, toned down so it doesn't wash out the label.
 .ctaSolid,
 .ctaOutline {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -95,21 +104,47 @@
   cursor: pointer;
   font-family: inherit;
   border: 1px solid transparent;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  overflow: hidden;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
 
-  &:hover {
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(115deg, transparent 40%, rgba(255, 255, 255, 0.2) 49%, rgba(255, 255, 255, 0.2) 56%, transparent 65%);
+    transform: translateX(-120%);
+    pointer-events: none;
+  }
+  &:hover,
+  &:focus-visible {
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+
+    &::before {
+      transition: transform 0.6s ease;
+      transform: translateX(120%);
+    }
   }
 }
 .ctaSolid {
-  background: var(--th-secondary);
+  background: color-mix(in srgb, var(--cta-accent, var(--th-secondary)) 90%, transparent);
   color: #fff;
-  border-color: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.3);
+
+  &:hover,
+  &:focus-visible {
+    background: color-mix(in srgb, var(--cta-accent, var(--th-secondary)) 100%, transparent);
+  }
 }
 .ctaOutline {
-  background: rgba(255, 255, 255, 0.94);
+  background: rgba(255, 255, 255, 0.9);
   color: var(--th-secondary);
+  border-color: rgba(255, 255, 255, 0.7);
+
+  &:hover,
+  &:focus-visible {
+    background: #fff;
+  }
 }
 // Icon sized to the button's own height (not inherited from the 12.5px
 // button font-size) so it stays legible once the label wraps to 2 lines.

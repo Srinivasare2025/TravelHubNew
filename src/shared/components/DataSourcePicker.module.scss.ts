@@ -1,4 +1,4 @@
-/* tslint:disable */
+
 require("./DataSourcePicker.module.css");
 const styles = {
   wrap: 'wrap_5c7c2bda',
@@ -10,4 +10,3 @@ const styles = {
 };
 
 export default styles;
-/* tslint:enable */

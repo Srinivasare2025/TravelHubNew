@@ -1,9 +1,11 @@
+@import '../../../../styles/fonts';
+
 .root {
-  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Arial, sans-serif;
+  font-family: var(--font-body);
   padding: 4px;
 }
 .gateWrap {
-  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Arial, sans-serif;
+  font-family: var(--font-body);
   padding: 40px 20px;
 }
 .layout {

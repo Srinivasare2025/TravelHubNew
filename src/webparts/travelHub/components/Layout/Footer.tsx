@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { NavLink } from 'react-router-dom';
 import { useServiceContext } from '../../../../state/ServiceContext';
 import styles from './Footer.module.scss';
 
@@ -10,6 +11,11 @@ const FOOTER_LINKS = ['About Travel Services', 'Privacy Policy', 'Terms of Use',
  * {org}. All rights reserved.), pipe-separated, no fill color of its own —
  * the richer "24/7 Travel Care" contact band on the Home page is
  * Home-specific content, not part of this global Footer.
+ *
+ * The trailing `/home-alternate` link below is a deliberate, temporary
+ * stakeholder-review aid — it surfaces the complete alternate Home page
+ * design (previously unreachable from any nav/UI) so the business can
+ * compare the two and pick one; remove once that decision is made.
  */
 export const Footer: React.FC = () => {
   const { config } = useServiceContext();
@@ -28,6 +34,11 @@ export const Footer: React.FC = () => {
           ))}
         </div>
         <div className={styles.copyright}>&copy; {year} {orgName}. All rights reserved.</div>
+      </div>
+      <div className={styles.altHomeRow}>
+        <NavLink to="/home-alternate" className={styles.altHomeLink}>
+          Comparing designs? See our alternate Home page →
+        </NavLink>
       </div>
     </footer>
   );

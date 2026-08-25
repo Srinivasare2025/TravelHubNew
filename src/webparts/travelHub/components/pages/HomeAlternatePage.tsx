@@ -2,10 +2,10 @@ import * as React from 'react';
 import { Icon } from '@fluentui/react';
 import { useNavigate } from 'react-router-dom';
 import { useServiceContext } from '../../../../state/ServiceContext';
-import { useThemeContext } from '../../../../state/ThemeContext';
 import { Hero, IconFeatureGrid, CTABand, LoadingSpinner } from '../../../../shared/components';
 import { resortHeroPlaceholderImage, photoPlaceholderImage } from '../../../../assets/images';
 import { ITestimonial } from '../../../../models';
+import { FIXED_PALETTE } from '../../../../theme/themes';
 import styles from './HomeAlternatePage.module.scss';
 
 const CATEGORY_CARDS = [
@@ -33,7 +33,6 @@ const WHATS_NEW = [
 
 export const HomeAlternatePage: React.FC = () => {
   const { service } = useServiceContext();
-  const { theme } = useThemeContext();
   const navigate = useNavigate();
   const [loading, setLoading] = React.useState(true);
   const [testimonials, setTestimonials] = React.useState<ITestimonial[]>([]);
@@ -55,7 +54,7 @@ export const HomeAlternatePage: React.FC = () => {
         title="Your Partner in Every Journey"
         highlight="TRAVEL 360"
         description="Smart travel. Seamless experiences. Supporting you at every step."
-        backgroundImageUrl={resortHeroPlaceholderImage(theme.palette.secondary, theme.palette.primary)}
+        backgroundImageUrl={resortHeroPlaceholderImage(FIXED_PALETTE.secondary, FIXED_PALETTE.primary)}
         media={(
           <div className={styles.quickPanel}>
             {[
@@ -105,7 +104,7 @@ export const HomeAlternatePage: React.FC = () => {
             <div className={styles.panelHeader}><h3>What&rsquo;s New</h3><a>View all updates</a></div>
             {WHATS_NEW.map((w) => (
               <div key={w.title} className={styles.newRow}>
-                <div className={styles.newThumb} style={{ backgroundImage: `url('${photoPlaceholderImage(w.title, theme.palette.primary, theme.palette.secondary)}')` }} />
+                <div className={styles.newThumb} style={{ backgroundImage: `url('${photoPlaceholderImage(w.title, FIXED_PALETTE.primary, FIXED_PALETTE.secondary)}')` }} />
                 <div><strong>{w.title}</strong><p>{w.description}</p></div>
               </div>
             ))}
@@ -146,7 +145,7 @@ export const HomeAlternatePage: React.FC = () => {
                 <Icon iconName="RightDoubleQuote" className={styles.quoteIcon} />
                 <p>{t.Quote}</p>
                 <div className={styles.testimonialAuthor}>
-                  <div className={styles.testimonialPhoto} style={{ backgroundImage: `url('${t.Photo?.Url || photoPlaceholderImage(t.Name, theme.palette.primary, theme.palette.secondary)}')` }} />
+                  <div className={styles.testimonialPhoto} style={{ backgroundImage: `url('${t.Photo?.Url || photoPlaceholderImage(t.Name, FIXED_PALETTE.primary, FIXED_PALETTE.secondary)}')` }} />
                   <div><strong>{t.Name}</strong><span>{t.Role}</span></div>
                 </div>
               </div>
