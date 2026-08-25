@@ -58,11 +58,10 @@ travel-hub-spfx/
 
 ## Prerequisites
 
-- **Node.js 18 LTS** (SPFx 1.18.x's supported runtime — SPFx tooling actively refuses to run on
-  Node 20+/22 in some versions and definitely refuses on very new majors; if your machine's default
-  Node is newer, install [nvm-windows](https://github.com/coreybutler/nvm-windows) or
-  [nvm](https://github.com/nvm-sh/nvm) and run `nvm install 18.20.4 && nvm use 18.20.4` before
-  anything else here).
+- **Node.js 22 LTS** (SPFx 1.21.1's supported runtime — SPFx tooling actively refuses to run on
+  Node versions outside `>=22.14.0 <23.0.0`; if your machine's default Node is older/newer, install
+  [nvm-windows](https://github.com/coreybutler/nvm-windows) or [nvm](https://github.com/nvm-sh/nvm)
+  and run `nvm install 22.23.1 && nvm use 22.23.1` before anything else here).
 - A SharePoint Online tenant you can provision lists on and (eventually) upload a package to the
   tenant App Catalog.
 - [PnP.PowerShell](https://pnp.github.io/powershell/) for provisioning: `Install-Module PnP.PowerShell -Scope CurrentUser`.

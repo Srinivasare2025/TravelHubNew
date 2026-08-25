@@ -245,6 +245,26 @@ Add-UrlField    -ListTitle "TravelTestimonials" -InternalName "Photo" -DisplayNa
 Add-NumberField -ListTitle "TravelTestimonials" -InternalName "SortOrder" -DisplayName "Sort Order"
 
 # ---------------------------------------------------------------------------
+# 15. TravelHeroImages (Custom List) — configurable, auto-scrolling Hero
+#     carousel slides, targeted per-screen via TargetPages (a route slug
+#     from HERO_TARGET_PAGES, e.g. "home", or "all" for every screen).
+# ---------------------------------------------------------------------------
+Write-Host "Creating TravelHeroImages..." -ForegroundColor Cyan
+New-PnPList -Title "TravelHeroImages" -Template GenericList
+Add-UrlField    -ListTitle "TravelHeroImages" -InternalName "Image" -DisplayName "Image"
+Add-TextField   -ListTitle "TravelHeroImages" -InternalName "Eyebrow" -DisplayName "Eyebrow"
+Add-TextField   -ListTitle "TravelHeroImages" -InternalName "Highlight" -DisplayName "Highlight"
+Add-TextField   -ListTitle "TravelHeroImages" -InternalName "Description" -DisplayName "Description" -Multiline
+Add-TextField   -ListTitle "TravelHeroImages" -InternalName "CtaLabel" -DisplayName "CTA Label"
+Add-UrlField    -ListTitle "TravelHeroImages" -InternalName "CtaUrl" -DisplayName "CTA URL"
+Add-ChoiceField -ListTitle "TravelHeroImages" -InternalName "TargetPages" -DisplayName "Target Pages" -Multi -Choices @(
+    "all","home","home-alternate","leisure-travel","wellness","sap-concur","meetings-events",
+    "policies","travel-care","sustainability","catering","visa-support","dashboard"
+)
+Add-NumberField -ListTitle "TravelHeroImages" -InternalName "SortOrder" -DisplayName "Sort Order"
+Add-YesNoField  -ListTitle "TravelHeroImages" -InternalName "IsActive" -DisplayName "Is Active"
+
+# ---------------------------------------------------------------------------
 # Groups & permissions
 # ---------------------------------------------------------------------------
 Write-Host "Creating SharePoint groups..." -ForegroundColor Cyan

@@ -1,9 +1,8 @@
-/* tslint:disable */
+
 require("./Layout.module.css");
 const styles = {
-  shell: 'shell_1c371d6b',
-  main: 'main_1c371d6b'
+  shell: 'shell_689fbcad',
+  main: 'main_689fbcad'
 };
 
 export default styles;
-/* tslint:enable */

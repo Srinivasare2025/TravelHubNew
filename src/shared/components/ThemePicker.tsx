@@ -3,7 +3,7 @@ import { IconButton, Callout, DirectionalHint } from '@fluentui/react';
 import { useThemeContext } from '../../state/ThemeContext';
 import styles from './ThemePicker.module.scss';
 
-/** Lets any user pick their own White/Black/Gold-Navy/Ocean theme — persists per-browser (see ThemeService). */
+/** Lets any user pick their own Sky/Dark/Cream mode — persists per-browser (see ThemeService). */
 export const ThemePicker: React.FC = () => {
   const { themeKey, availableThemes, setTheme, isPersonalOverride, resetToSiteDefault } = useThemeContext();
   const [open, setOpen] = React.useState(false);
@@ -34,7 +34,7 @@ export const ThemePicker: React.FC = () => {
                 className={t.key === themeKey ? styles.optionActive : styles.option}
                 onClick={() => { setTheme(t.key); setOpen(false); }}
               >
-                <span className={styles.swatch} style={{ background: `linear-gradient(135deg, ${t.palette.primary}, ${t.palette.secondary})` }} />
+                <span className={styles.swatch} style={{ background: t.palette.background }} />
                 {t.label}
               </button>
             ))}

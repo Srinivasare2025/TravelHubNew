@@ -1,4 +1,4 @@
-/* tslint:disable */
+
 require("./SettingsPage.module.css");
 const styles = {
   grid: 'grid_cf2a751d',
@@ -7,4 +7,3 @@ const styles = {
 };
 
 export default styles;
-/* tslint:enable */

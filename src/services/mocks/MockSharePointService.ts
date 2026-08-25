@@ -24,7 +24,8 @@ import {
   ITeamMember,
   ITestimonial,
   IDashboardAnalytics,
-  IDashboardFilters
+  IDashboardFilters,
+  IHeroSlide
 } from '../../models';
 
 /**
@@ -153,6 +154,14 @@ export class MockSharePointService implements ISharePointService {
 
   public async getTestimonials(): Promise<ITestimonial[]> {
     return this.store.TravelTestimonials.slice().sort((a, b) => a.SortOrder - b.SortOrder);
+  }
+
+  public async getHeroImages(pageKey?: string): Promise<IHeroSlide[]> {
+    const rows = (this.store.TravelHeroImages as IHeroSlide[])
+      .filter((r) => r.IsActive)
+      .sort((a, b) => a.SortOrder - b.SortOrder);
+    if (!pageKey) return rows;
+    return rows.filter((r) => r.TargetPages?.results?.includes(pageKey) || r.TargetPages?.results?.includes('all'));
   }
 
   // Filters are accepted for API-shape parity with the real service; the

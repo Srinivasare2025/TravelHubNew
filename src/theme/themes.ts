@@ -1,65 +1,54 @@
 import { IThemeDefinition, ThemeKey } from '../models';
 
 /**
- * Built-in theme presets. Adding a 5th theme is: add an entry here, done —
- * ThemePicker, ThemeContext and every component that reads CSS custom
- * properties (--th-primary etc.) via ThemeContext pick it up automatically.
+ * The fixed, theme-independent brand colors every card/control/generated-placeholder-image
+ * uses regardless of the selected Sky/Dark/Cream mode (see ThemedRoot's doc comment) — the
+ * single source of truth for the values ThemedRoot sets on `--th-primary`/`--th-secondary`/
+ * `--th-text`/`--th-text-muted`/`--th-border`/`--th-card-bg`, and for the ~10 page/component
+ * files that generate placeholder images from `theme.palette.primary`/`.secondary` (those
+ * colors are brand-fixed now, not theme-derived, so they read this constant directly instead).
+ */
+export const FIXED_PALETTE = {
+  primary: '#b89c66',
+  secondary: '#04253c',
+  text: '#04253c',
+  textMuted: '#7b8794',
+  border: '#e8e5e0',
+  cardBackground: '#ffffff'
+};
+
+/**
+ * Built-in theme presets. Each one only changes the page canvas background and its
+ * matching legible text color — cards/buttons/controls are fixed regardless of which
+ * theme is active (see ThemedRoot's doc comment). Adding a 4th mode is: add an entry
+ * here, done — ThemePicker and ThemeContext pick it up automatically.
  */
 export const THEMES: Record<ThemeKey, IThemeDefinition> = {
-  goldNavy: {
-    key: 'goldNavy',
-    label: 'Gold & Navy (brand default)',
+  sky: {
+    key: 'sky',
+    label: 'Sky',
     isDark: false,
     palette: {
-      primary: '#b89c66',
-      secondary: '#04253c',
-      background: '#ffffff',
-      text: '#04253c',
-      textMuted: '#7b8794',
-      border: '#e8e5e0',
-      cardBackground: '#ffffff'
+      background: '#eaf4fa',
+      text: '#04253c'
     }
   },
-  white: {
-    key: 'white',
-    label: 'White / Light',
-    isDark: false,
-    palette: {
-      primary: '#2b6cb0',
-      secondary: '#1a202c',
-      background: '#ffffff',
-      text: '#1a202c',
-      textMuted: '#718096',
-      border: '#e2e8f0',
-      cardBackground: '#ffffff'
-    }
-  },
-  black: {
-    key: 'black',
-    label: 'Black / Dark',
+  dark: {
+    key: 'dark',
+    label: 'Dark',
     isDark: true,
     palette: {
-      primary: '#d4af6a',
-      secondary: '#f5f5f5',
       background: '#121417',
-      text: '#f0f0f0',
-      textMuted: '#a3a9b3',
-      border: '#2c2f36',
-      cardBackground: '#1b1e23'
+      text: '#f0f0f0'
     }
   },
-  ocean: {
-    key: 'ocean',
-    label: 'Ocean Blue',
+  cream: {
+    key: 'cream',
+    label: 'Cream',
     isDark: false,
     palette: {
-      primary: '#0ea5b7',
-      secondary: '#073b4c',
-      background: '#ffffff',
-      text: '#073b4c',
-      textMuted: '#5b7c89',
-      border: '#dcecef',
-      cardBackground: '#ffffff'
+      background: '#faf6ec',
+      text: '#04253c'
     }
   }
 };
@@ -68,11 +57,6 @@ export const THEME_LIST: IThemeDefinition[] = Object.keys(THEMES).map((k) => THE
 
 /** Applies a theme's palette as CSS custom properties on a container element. */
 export function applyThemeToElement(el: HTMLElement, theme: IThemeDefinition): void {
-  el.style.setProperty('--th-primary', theme.palette.primary);
-  el.style.setProperty('--th-secondary', theme.palette.secondary);
   el.style.setProperty('--th-bg', theme.palette.background);
   el.style.setProperty('--th-text', theme.palette.text);
-  el.style.setProperty('--th-text-muted', theme.palette.textMuted);
-  el.style.setProperty('--th-border', theme.palette.border);
-  el.style.setProperty('--th-card-bg', theme.palette.cardBackground);
 }

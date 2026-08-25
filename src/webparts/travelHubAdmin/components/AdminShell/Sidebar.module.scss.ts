@@ -1,4 +1,4 @@
-/* tslint:disable */
+
 require("./Sidebar.module.css");
 const styles = {
   sidebar: 'sidebar_d38f9851',
@@ -10,4 +10,3 @@ const styles = {
 };
 
 export default styles;
-/* tslint:enable */

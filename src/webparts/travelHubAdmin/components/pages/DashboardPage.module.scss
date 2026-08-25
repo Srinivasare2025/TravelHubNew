@@ -28,7 +28,7 @@
   font-size: 24px;
   font-weight: 700;
   color: var(--th-primary);
-  font-family: Georgia, serif;
+  font-family: var(--font-display);
 }
 .statLabel {
   font-size: 12px;
@@ -74,7 +74,7 @@
     margin: 0;
     font-size: 15px;
     color: var(--th-primary);
-    font-family: Georgia, serif;
+    font-family: var(--font-display);
   }
   a {
     font-size: 12px;

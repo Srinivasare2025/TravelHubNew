@@ -21,7 +21,8 @@ import {
   ITeamMember,
   ITestimonial,
   IDashboardAnalytics,
-  IDashboardFilters
+  IDashboardFilters,
+  IHeroSlide
 } from '../models';
 
 /**
@@ -57,6 +58,8 @@ export interface ISharePointService {
   getTeamMembers(): Promise<ITeamMember[]>;
   getTestimonials(): Promise<ITestimonial[]>;
   getDashboardAnalytics(filters?: IDashboardFilters): Promise<IDashboardAnalytics>;
+  /** Active Hero carousel slides, optionally narrowed to ones targeting `pageKey` (or 'all'); omit `pageKey` for every active slide. */
+  getHeroImages(pageKey?: string): Promise<IHeroSlide[]>;
 
   // ---- Generic admin CRUD ----
   getAllItems<T>(listName: string, query?: string): Promise<T[]>;

@@ -1,4 +1,4 @@
-/* tslint:disable */
+
 require("./SectionTable.module.css");
 const styles = {
   tableWrap: 'tableWrap_41b0a63c',
@@ -14,4 +14,3 @@ const styles = {
 };
 
 export default styles;
-/* tslint:enable */

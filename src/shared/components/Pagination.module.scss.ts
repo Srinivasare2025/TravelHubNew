@@ -1,4 +1,4 @@
-/* tslint:disable */
+
 require("./Pagination.module.css");
 const styles = {
   pagination: 'pagination_e62b57af',
@@ -9,4 +9,3 @@ const styles = {
 };
 
 export default styles;
-/* tslint:enable */

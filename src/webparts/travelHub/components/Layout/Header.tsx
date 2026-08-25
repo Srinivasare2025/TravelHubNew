@@ -3,9 +3,9 @@ import { Icon, Callout, DirectionalHint, Persona, PersonaSize } from '@fluentui/
 import { useNavigate } from 'react-router-dom';
 import { useServiceContext } from '../../../../state/ServiceContext';
 import { useUserContext } from '../../../../state/UserContext';
-import { useThemeContext } from '../../../../state/ThemeContext';
 import { ThemePicker, DataSourcePicker } from '../../../../shared/components';
 import { brandMarkSvg } from '../../../../assets/images';
+import { FIXED_PALETTE } from '../../../../theme/themes';
 import { ISearchResultItem, INotification } from '../../../../models';
 import styles from './Header.module.scss';
 
@@ -20,7 +20,6 @@ function timeAgo(dateStr: string): string {
 export const Header: React.FC = () => {
   const { service, config, webAbsoluteUrl } = useServiceContext();
   const { user } = useUserContext();
-  const { theme } = useThemeContext();
   const navigate = useNavigate();
 
   const [searchTerm, setSearchTerm] = React.useState('');
@@ -67,7 +66,7 @@ export const Header: React.FC = () => {
     <header className={styles.header}>
       <div className={styles.row1}>
         <a className={styles.brand} onClick={() => navigate('/')} role="button" tabIndex={0}>
-          <img className={styles.logo} src={config.logoUrl || brandMarkSvg(theme.palette.primary)} alt="" aria-hidden="true" />
+          <img className={styles.logo} src={config.logoUrl || brandMarkSvg(FIXED_PALETTE.primary)} alt="" aria-hidden="true" />
           <span className={styles.brandText}>
             <span className={styles.org}>{orgFirst}</span>
             {orgRest.length > 0 && <span className={styles.product}>{orgRest.join(' ')}</span>}

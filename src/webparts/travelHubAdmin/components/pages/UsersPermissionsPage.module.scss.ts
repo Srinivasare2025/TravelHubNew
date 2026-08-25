@@ -1,4 +1,4 @@
-/* tslint:disable */
+
 require("./UsersPermissionsPage.module.css");
 const styles = {
   count: 'count_c0770a53',
@@ -7,4 +7,3 @@ const styles = {
 };
 
 export default styles;
-/* tslint:enable */

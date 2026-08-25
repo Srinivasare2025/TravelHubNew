@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ThemeProvider as FluentThemeProvider, createTheme, ITheme as IFluentTheme } from '@fluentui/react';
 import { ThemeKey, IThemeDefinition } from '../models';
-import { THEMES } from '../theme/themes';
+import { THEMES, FIXED_PALETTE } from '../theme/themes';
 import { ThemeService } from '../services/ThemeService';
 import { useServiceContext } from './ServiceContext';
 
@@ -18,23 +18,28 @@ export interface IThemeContextValue {
 const ThemeContext = React.createContext<IThemeContextValue | undefined>(undefined);
 const themeService = new ThemeService();
 
-function toFluentTheme(def: IThemeDefinition): IFluentTheme {
-  return createTheme({
-    palette: {
-      themePrimary: def.palette.primary,
-      themeDarker: def.palette.secondary,
-      neutralLighter: def.isDark ? '#23262c' : '#f5f3ef',
-      neutralLight: def.isDark ? '#2c2f36' : '#eceae5',
-      white: def.palette.cardBackground,
-      neutralPrimary: def.palette.text,
-      neutralSecondary: def.palette.textMuted,
-      neutralTertiary: def.palette.textMuted,
-      neutralLighterAlt: def.isDark ? '#1b1e23' : '#faf9f7'
-    },
-    defaultFontStyle: { fontFamily: 'Segoe UI, -apple-system, BlinkMacSystemFont, Roboto, Arial, sans-serif' },
-    isInverted: def.isDark
-  });
-}
+// Fluent-rendered controls (Callout, Dropdown, Persona etc., wrapped in
+// FluentThemeProvider below) are exactly the kind of "control" that stays
+// fixed regardless of Sky/Dark/Cream (see ThemedRoot's doc comment) — so
+// unlike the old 4-theme model, this Fluent palette no longer varies by
+// theme at all (no more `def.isDark` branching into dark neutrals/inverted
+// mode); it's computed once from the same FIXED_PALETTE every other fixed
+// card/control color comes from.
+const FLUENT_THEME: IFluentTheme = createTheme({
+  palette: {
+    themePrimary: FIXED_PALETTE.primary,
+    themeDarker: FIXED_PALETTE.secondary,
+    neutralLighter: '#f5f3ef',
+    neutralLight: '#eceae5',
+    white: FIXED_PALETTE.cardBackground,
+    neutralPrimary: FIXED_PALETTE.text,
+    neutralSecondary: FIXED_PALETTE.textMuted,
+    neutralTertiary: FIXED_PALETTE.textMuted,
+    neutralLighterAlt: '#faf9f7'
+  },
+  defaultFontStyle: { fontFamily: 'Segoe UI, -apple-system, BlinkMacSystemFont, Roboto, Arial, sans-serif' },
+  isInverted: false
+});
 
 export const ThemeContextProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { config } = useServiceContext();
@@ -56,7 +61,6 @@ export const ThemeContextProvider: React.FC<{ children: React.ReactNode }> = ({ 
   }, [config.defaultTheme]);
 
   const theme = THEMES[themeKey];
-  const fluentTheme = React.useMemo(() => toFluentTheme(theme), [theme]);
 
   const value: IThemeContextValue = {
     themeKey,
@@ -69,7 +73,7 @@ export const ThemeContextProvider: React.FC<{ children: React.ReactNode }> = ({ 
 
   return (
     <ThemeContext.Provider value={value}>
-      <FluentThemeProvider theme={fluentTheme} style={{ background: 'transparent' }}>
+      <FluentThemeProvider theme={FLUENT_THEME} style={{ background: 'transparent' }}>
         {children}
       </FluentThemeProvider>
     </ThemeContext.Provider>

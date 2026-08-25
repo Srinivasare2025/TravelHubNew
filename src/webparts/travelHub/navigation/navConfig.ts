@@ -16,11 +16,15 @@ export interface INavItem {
  * page's own breadcrumb trail (the more authoritative signal — the
  * mockup's literal top-nav label lists drift slightly page to page):
  * Wellness Beyond Office breadcrumbs under Leisure Travel, Catering
- * Services and Visa Support both breadcrumb under "Support". "Home
- * Alternate" is a design-alternative page, not a real nav destination —
- * it's linked from the Footer instead. "Dashboard" isn't shown in the
- * mockup's inner-page nav bars but gets its own top-level slot here for
- * discoverability. See docs/ARCHITECTURE.md for how to add another page.
+ * Services and Visa Support both breadcrumb under "Support". "Dashboard"
+ * isn't shown in the mockup's inner-page nav bars but gets its own
+ * top-level slot here for discoverability. See docs/ARCHITECTURE.md for
+ * how to add another page.
+ *
+ * "Home Alternate" is a design-alternative page, not a permanent nav
+ * destination — it's the last item here (and also linked from the Footer)
+ * purely so the business can compare it against the real Home page; remove
+ * both links once that decision is made.
  */
 export const NAV_ITEMS: INavItem[] = [
   { key: 'home', label: 'Home', route: '/' },
@@ -45,5 +49,6 @@ export const NAV_ITEMS: INavItem[] = [
       { key: 'visa-support', label: 'Visa Support', route: '/visa-support' }
     ]
   },
-  { key: 'dashboard', label: 'Dashboard', route: '/dashboard' }
+  { key: 'dashboard', label: 'Dashboard', route: '/dashboard' },
+  { key: 'home-alternate', label: 'Alternative Home', route: '/home-alternate' }
 ];

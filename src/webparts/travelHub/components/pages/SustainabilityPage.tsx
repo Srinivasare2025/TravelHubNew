@@ -2,10 +2,10 @@ import * as React from 'react';
 import { Icon } from '@fluentui/react';
 import { useNavigate } from 'react-router-dom';
 import { useServiceContext } from '../../../../state/ServiceContext';
-import { useThemeContext } from '../../../../state/ThemeContext';
 import { Hero, IconFeatureGrid, StatStrip, CTABand, LoadingSpinner } from '../../../../shared/components';
 import { resortHeroPlaceholderImage } from '../../../../assets/images';
 import { ISustainabilityMetric } from '../../../../models';
+import { FIXED_PALETTE } from '../../../../theme/themes';
 import styles from './SustainabilityPage.module.scss';
 
 const COMMITMENT = [
@@ -19,7 +19,6 @@ const GUIDELINES = ['Choose direct flights when possible', 'Use public transport
 
 export const SustainabilityPage: React.FC = () => {
   const { service } = useServiceContext();
-  const { theme } = useThemeContext();
   const navigate = useNavigate();
   const [metrics, setMetrics] = React.useState<ISustainabilityMetric[] | undefined>(undefined);
 
@@ -37,7 +36,7 @@ export const SustainabilityPage: React.FC = () => {
         title="Sustainability"
         highlight="Travel today, protect tomorrow"
         description="We are committed to responsible travel that reduces our impact and supports a better future for generations to come."
-        backgroundImageUrl={resortHeroPlaceholderImage(theme.palette.secondary, theme.palette.primary)}
+        backgroundImageUrl={resortHeroPlaceholderImage(FIXED_PALETTE.secondary, FIXED_PALETTE.primary)}
         media={<div className={styles.leafBadge}><Icon iconName="Flower" /></div>}
       />
 

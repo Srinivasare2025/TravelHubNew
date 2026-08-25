@@ -35,7 +35,8 @@ export class ConfigService {
         cateringMenus: rows.list_cateringMenus ?? DEFAULT_LIST_NAMES.cateringMenus,
         sustainabilityMetrics: rows.list_sustainabilityMetrics ?? DEFAULT_LIST_NAMES.sustainabilityMetrics,
         team: rows.list_team ?? DEFAULT_LIST_NAMES.team,
-        testimonials: rows.list_testimonials ?? DEFAULT_LIST_NAMES.testimonials
+        testimonials: rows.list_testimonials ?? DEFAULT_LIST_NAMES.testimonials,
+        heroImages: rows.list_heroImages ?? DEFAULT_LIST_NAMES.heroImages
       },
       groups: {
         admins: rows.group_admins ?? DEFAULT_GROUP_NAMES.admins,
@@ -66,6 +67,7 @@ export class ConfigService {
       list_sustainabilityMetrics: config.lists.sustainabilityMetrics,
       list_team: config.lists.team,
       list_testimonials: config.lists.testimonials,
+      list_heroImages: config.lists.heroImages,
       group_admins: config.groups.admins,
       group_contributors: config.groups.contributors,
       group_visitors: config.groups.visitors,

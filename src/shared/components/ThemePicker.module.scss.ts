@@ -1,4 +1,4 @@
-/* tslint:disable */
+
 require("./ThemePicker.module.css");
 const styles = {
   wrap: 'wrap_e1361fbe',
@@ -12,4 +12,3 @@ const styles = {
 };
 
 export default styles;
-/* tslint:enable */

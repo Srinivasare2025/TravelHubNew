@@ -2,10 +2,10 @@ import * as React from 'react';
 import { Icon } from '@fluentui/react';
 import { useNavigate } from 'react-router-dom';
 import { useServiceContext } from '../../../../state/ServiceContext';
-import { useThemeContext } from '../../../../state/ThemeContext';
 import { Hero, IconFeatureGrid, ProcessSteps, CTABand, LoadingSpinner } from '../../../../shared/components';
 import { cardPlaceholderImage } from '../../../../assets/images';
 import { ICateringMenu } from '../../../../models';
+import { FIXED_PALETTE } from '../../../../theme/themes';
 import styles from './CateringPage.module.scss';
 
 const FEATURES = [
@@ -40,7 +40,6 @@ const LUNCH_COLUMNS = [
 
 export const CateringPage: React.FC = () => {
   const { service } = useServiceContext();
-  const { theme } = useThemeContext();
   const navigate = useNavigate();
   const [menus, setMenus] = React.useState<ICateringMenu[] | undefined>(undefined);
 
@@ -87,7 +86,7 @@ export const CateringPage: React.FC = () => {
             <div key={m.Id} className={styles.menuCard}>
               <div className={styles.menuHeader}><span><Icon iconName="EatDrink" /></span><div><strong>{m.Name}</strong><em>{m.Description}</em></div></div>
               <ul>{m.Items.map((it) => <li key={it}>{it}</li>)}</ul>
-              <div className={styles.menuPhoto} style={{ backgroundImage: `url('${cardPlaceholderImage(theme.palette.primary, theme.palette.secondary, 'promo')}')` }} />
+              <div className={styles.menuPhoto} style={{ backgroundImage: `url('${cardPlaceholderImage(FIXED_PALETTE.primary, FIXED_PALETTE.secondary, 'promo')}')` }} />
             </div>
           ))}
         </div>
@@ -97,7 +96,7 @@ export const CateringPage: React.FC = () => {
             <span><Icon iconName="EatDrink" /></span>
             <div><strong>Lunch Menu</strong><em>Per Person</em></div>
           </div>
-          <div className={styles.lunchPhoto} style={{ backgroundImage: `url('${cardPlaceholderImage(theme.palette.primary, theme.palette.secondary, 'event')}')` }} />
+          <div className={styles.lunchPhoto} style={{ backgroundImage: `url('${cardPlaceholderImage(FIXED_PALETTE.primary, FIXED_PALETTE.secondary, 'event')}')` }} />
           <div className={styles.lunchColumns}>
             {LUNCH_COLUMNS.map((c) => (
               <div key={c.title}>

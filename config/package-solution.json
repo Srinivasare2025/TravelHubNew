@@ -3,7 +3,7 @@
   "solution": {
     "name": "travel-hub-spfx-client-side-solution",
     "id": "8f3a4b2e-6d1c-4a9f-9e2b-7c5d1e8f3a6b",
-    "version": "1.0.0.0",
+    "version": "1.0.0.1",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
@@ -12,7 +12,7 @@
       "websiteUrl": "",
       "privacyUrl": "",
       "termsOfUseUrl": "",
-      "mpnId": "Undefined-1.18.2"
+      "mpnId": "Undefined-1.21.1"
     },
     "metadata": {
       "shortDescription": {

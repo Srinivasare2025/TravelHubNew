@@ -1,5 +1,9 @@
+// Tracks the selected Sky/Dark/Cream page background (the header/nav bar is
+// the "main container" chrome the theme is meant to re-color) — everything
+// inside it (search box, icon buttons, dropdowns) stays fixed white by
+// design, since those are controls, not page canvas.
 .header {
-  background: #fff;
+  background: var(--th-bg);
   border-bottom: 1px solid var(--th-border);
 }
 
@@ -32,17 +36,20 @@
   flex-direction: column;
   line-height: 1.18;
 }
+// .org/.product sit directly on .header's theme-tracking background, so
+// they need the matching --th-page-text, not the fixed --th-secondary used
+// by everything with its own fixed (always-white) background.
 .org {
-  font-family: Georgia, serif;
+  font-family: var(--font-display);
   font-size: 17px;
   font-weight: 700;
-  color: var(--th-secondary);
+  color: var(--th-page-text);
 }
 .product {
-  font-family: Georgia, serif;
+  font-family: var(--font-display);
   font-size: 17px;
   font-weight: 700;
-  color: var(--th-secondary);
+  color: var(--th-page-text);
 }
 
 .search {

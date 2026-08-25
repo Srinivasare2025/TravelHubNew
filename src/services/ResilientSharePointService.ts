@@ -22,7 +22,8 @@ import {
   ITeamMember,
   ITestimonial,
   IDashboardAnalytics,
-  IDashboardFilters
+  IDashboardFilters,
+  IHeroSlide
 } from '../models';
 
 /**
@@ -111,6 +112,9 @@ export class ResilientSharePointService implements ISharePointService {
   }
   public getTestimonials(): Promise<ITestimonial[]> {
     return this.withFallback('getTestimonials', () => this.real.getTestimonials(), () => this.mock.getTestimonials());
+  }
+  public getHeroImages(pageKey?: string): Promise<IHeroSlide[]> {
+    return this.withFallback('getHeroImages', () => this.real.getHeroImages(pageKey), () => this.mock.getHeroImages(pageKey));
   }
   public getDashboardAnalytics(filters?: IDashboardFilters): Promise<IDashboardAnalytics> {
     return this.withFallback('getDashboardAnalytics', () => this.real.getDashboardAnalytics(filters), () => this.mock.getDashboardAnalytics(filters));

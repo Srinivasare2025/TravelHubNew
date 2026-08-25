@@ -2,10 +2,10 @@ import * as React from 'react';
 import { Icon } from '@fluentui/react';
 import { useNavigate } from 'react-router-dom';
 import { useServiceContext } from '../../../../state/ServiceContext';
-import { useThemeContext } from '../../../../state/ThemeContext';
-import { Hero, IconFeatureGrid, StatStrip, SectionHeading, LoadingSpinner } from '../../../../shared/components';
+import { HeroCarousel, IconFeatureGrid, StatStrip, SectionHeading, LoadingSpinner, IHeroProps } from '../../../../shared/components';
 import { resortHeroPlaceholderImage, photoPlaceholderImage, cardPlaceholderImage, deviceMockupPlaceholderImage } from '../../../../assets/images';
 import { INewsItem, ITeamMember, IQuickLink } from '../../../../models';
+import { FIXED_PALETTE } from '../../../../theme/themes';
 import styles from './HomePage.module.scss';
 
 const INFO_COLUMNS: Array<{ icon: string; title: string; items: string[]; route: string; imageVariant: 'event' | 'journey' | 'receipt' }> = [
@@ -25,6 +25,27 @@ const GLANCE_STATS: Array<{ icon: string; value: string; label: string; deltaLab
   { icon: 'Airplane', value: '12,842', label: 'Bookings Managed (YTD)', deltaLabel: '▲ 10% vs last year' }
 ];
 
+/**
+ * Today's static Home hero — used as-is by HeroCarousel whenever the
+ * TravelHeroImages list has zero active slides targeting 'home' (or 'all'),
+ * so an unconfigured site looks exactly like it always has.
+ */
+const HERO_FALLBACK: IHeroProps = {
+  eyebrow: 'Welcome to',
+  title: 'Travel Services – F&A',
+  highlight: 'Your Partner in Every Journey',
+  description: 'Your one-stop hub for business and leisure travel. Guidance, tools, policies and support – everything you need for a seamless travel experience.',
+  backgroundImageUrl: resortHeroPlaceholderImage(FIXED_PALETTE.primary, FIXED_PALETTE.secondary),
+  ctas: [
+    { label: 'Book Business Travel', icon: 'Suitcase', to: '/sap-concur', accentColor: 'var(--th-secondary)' },
+    { label: 'Leisure Travel Offers', icon: 'Sunny', to: '/leisure-travel', accentColor: 'var(--th-accent-teal)' },
+    { label: 'SAP Concur Support', icon: 'Devices3', to: '/sap-concur', accentColor: 'var(--th-accent-blue)' },
+    { label: 'Travel Policy', icon: 'DocumentApproval', to: '/policies', accentColor: 'var(--th-accent-bronze)' },
+    { label: 'Emergency Assistance – Travel Care', icon: 'Headset', to: '/travel-care', variant: 'outline' },
+    { label: 'Contact Travel Team', icon: 'ContactCardSettings', to: '/travel-care', variant: 'outline' }
+  ]
+};
+
 /** Medical / After-hours / ATS emergency lines shown pipe-separated in the 24/7 Travel Care band. */
 const EMERGENCY_LINES: Array<{ icon: string; label: string; phone: string }> = [
   { icon: 'Health', label: 'Medical Assistance', phone: '+966 12 345 0001' },
@@ -34,7 +55,6 @@ const EMERGENCY_LINES: Array<{ icon: string; label: string; phone: string }> = [
 
 export const HomePage: React.FC = () => {
   const { service } = useServiceContext();
-  const { theme } = useThemeContext();
   const navigate = useNavigate();
 
   const [loading, setLoading] = React.useState(true);
@@ -62,21 +82,7 @@ export const HomePage: React.FC = () => {
 
   return (
     <div className={styles.page}>
-      <Hero
-        eyebrow="Welcome to"
-        title="Travel Services – F&A"
-        highlight="Your Partner in Every Journey"
-        description="Your one-stop hub for business and leisure travel. Guidance, tools, policies and support – everything you need for a seamless travel experience."
-        backgroundImageUrl={resortHeroPlaceholderImage(theme.palette.primary, theme.palette.secondary)}
-        ctas={[
-          { label: 'Book Business Travel', icon: 'Suitcase', to: '/sap-concur', accentColor: 'var(--th-secondary)' },
-          { label: 'Leisure Travel Offers', icon: 'Sunny', to: '/leisure-travel', accentColor: 'var(--th-accent-teal)' },
-          { label: 'SAP Concur Support', icon: 'Devices3', to: '/sap-concur', accentColor: 'var(--th-accent-blue)' },
-          { label: 'Travel Policy', icon: 'DocumentApproval', to: '/policies', accentColor: 'var(--th-accent-bronze)' },
-          { label: 'Emergency Assistance – Travel Care', icon: 'Headset', to: '/travel-care', variant: 'outline' },
-          { label: 'Contact Travel Team', icon: 'ContactCardSettings', to: '/travel-care', variant: 'outline' }
-        ]}
-      />
+      <HeroCarousel pageKey="home" fallback={HERO_FALLBACK} />
 
       <div className={styles.body}>
         <SectionHeading title="Quick Access" viewAllRoute="/leisure-travel" viewAllLabel="View all services" />
@@ -96,7 +102,7 @@ export const HomePage: React.FC = () => {
               </div>
               <div
                 className={styles.infoImage}
-                style={{ backgroundImage: `url('${cardPlaceholderImage(theme.palette.primary, theme.palette.secondary, col.imageVariant)}')` }}
+                style={{ backgroundImage: `url('${cardPlaceholderImage(FIXED_PALETTE.primary, FIXED_PALETTE.secondary, col.imageVariant)}')` }}
               />
               <span className={styles.infoArrow}><Icon iconName="ChevronRightSmall" /></span>
             </div>
@@ -108,8 +114,8 @@ export const HomePage: React.FC = () => {
             className={`${styles.promoCard} ${styles.promoDark}`}
             style={{
               backgroundImage:
-                `linear-gradient(100deg, ${theme.palette.secondary} 0%, ${theme.palette.secondary} 44%, rgba(4,37,60,0.55) 72%, rgba(4,37,60,0.15) 100%), ` +
-                `url('${deviceMockupPlaceholderImage(theme.palette.primary, theme.palette.secondary)}')`
+                `linear-gradient(100deg, ${FIXED_PALETTE.secondary} 0%, ${FIXED_PALETTE.secondary} 44%, rgba(4,37,60,0.55) 72%, rgba(4,37,60,0.15) 100%), ` +
+                `url('${deviceMockupPlaceholderImage(FIXED_PALETTE.primary, FIXED_PALETTE.secondary)}')`
             }}
           >
             <h4>SAP Concur Hub</h4>
@@ -141,7 +147,7 @@ export const HomePage: React.FC = () => {
               </div>
               <div
                 className={styles.promoImage}
-                style={{ backgroundImage: `url('${cardPlaceholderImage(theme.palette.primary, theme.palette.secondary, 'leaf')}')` }}
+                style={{ backgroundImage: `url('${cardPlaceholderImage(FIXED_PALETTE.primary, FIXED_PALETTE.secondary, 'leaf')}')` }}
               />
             </div>
           </div>
@@ -160,7 +166,7 @@ export const HomePage: React.FC = () => {
               </div>
               <div
                 className={styles.promoImage}
-                style={{ backgroundImage: `url('${cardPlaceholderImage(theme.palette.primary, theme.palette.secondary, 'hotel')}')` }}
+                style={{ backgroundImage: `url('${cardPlaceholderImage(FIXED_PALETTE.primary, FIXED_PALETTE.secondary, 'hotel')}')` }}
               />
             </div>
           </div>
@@ -174,7 +180,7 @@ export const HomePage: React.FC = () => {
               {news.length === 0 && <p className={styles.empty}>No news published yet.</p>}
               {news.map((n) => (
                 <div key={n.Id} className={styles.newsItem}>
-                  <div className={styles.newsThumb} style={{ backgroundImage: `url('${photoPlaceholderImage(n.Category, theme.palette.primary, theme.palette.secondary)}')` }} />
+                  <div className={styles.newsThumb} style={{ backgroundImage: `url('${photoPlaceholderImage(n.Category, FIXED_PALETTE.primary, FIXED_PALETTE.secondary)}')` }} />
                   <div className={styles.newsBody}>
                     <h5>{n.Title}</h5>
                     <p>{n.Summary}</p>
@@ -197,7 +203,7 @@ export const HomePage: React.FC = () => {
         <div className={styles.teamGrid}>
           {topTeam.map((m) => (
             <div key={m.Id} className={styles.teamCard}>
-              <div className={styles.teamPhoto} style={{ backgroundImage: `url('${m.Photo?.Url || photoPlaceholderImage(m.Name, theme.palette.primary, theme.palette.secondary)}')` }} />
+              <div className={styles.teamPhoto} style={{ backgroundImage: `url('${m.Photo?.Url || photoPlaceholderImage(m.Name, FIXED_PALETTE.primary, FIXED_PALETTE.secondary)}')` }} />
               <div className={styles.teamInfo}>
                 <h5>{m.Name}</h5>
                 <p>{m.Role}</p>
@@ -212,12 +218,14 @@ export const HomePage: React.FC = () => {
           ))}
         </div>
 
+        {/* 4 explicit columns: (1) title + Emergency Travel, (2) ATS Hotline, (3) the
+            3 emergency numbers stacked, (4) the safety message — previously the title
+            sat alone while Emergency Travel/ATS Hotline were bundled into one column,
+            which read as misaligned. */}
         <div className={styles.richBand}>
           <div>
             <h3>We&rsquo;re here for you – 24/7 Travel Care</h3>
-          </div>
-          <div className={styles.richContacts}>
-            <div>
+            <div className={styles.richContact}>
               <Icon iconName="Health" />
               <div>
                 <strong>Emergency Travel (24/7 Travel Care)</strong>
@@ -225,19 +233,19 @@ export const HomePage: React.FC = () => {
                 <span>+966 12 345 0000</span>
               </div>
             </div>
+          </div>
+          <div className={styles.richContact}>
+            <Icon iconName="Headset" />
             <div>
-              <Icon iconName="Headset" />
-              <div>
-                <strong>ATS Hotline</strong>
-                <p>For immediate support with your travel needs.</p>
-                <span>+966 12 345 1111</span>
-              </div>
+              <strong>ATS Hotline</strong>
+              <p>For immediate support with your travel needs.</p>
+              <span>+966 12 345 1111</span>
             </div>
           </div>
           <div className={styles.richList}>
             {EMERGENCY_LINES.map((l, i) => (
               <React.Fragment key={l.label}>
-                {i > 0 && <span className={styles.richPipe} aria-hidden="true">|</span>}
+                {i > 0 && <span className={styles.richDivider} aria-hidden="true" />}
                 <div><Icon iconName={l.icon} /> {l.label} <b>{l.phone}</b></div>
               </React.Fragment>
             ))}

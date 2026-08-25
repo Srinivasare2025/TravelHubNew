@@ -70,7 +70,11 @@ export const Hero: React.FC<IHeroProps> = ({
                     key={i}
                     type="button"
                     className={cta.variant === 'outline' ? styles.ctaOutline : styles.ctaSolid}
-                    style={cta.accentColor ? { background: cta.accentColor, borderColor: cta.accentColor } : undefined}
+                    // accentColor sets a CSS var Hero.module.scss mixes to ~90% opacity for the button's
+                    // own background (color-mix), so each button reads clearly as its brand color — with
+                    // just enough transparency for the hero photo to show through a little, not a heavy
+                    // glass/blur effect. Text stays white; the border gets the fully-opaque accent for a crisp edge.
+                    style={cta.accentColor ? ({ '--cta-accent': cta.accentColor, borderColor: cta.accentColor } as React.CSSProperties) : undefined}
                     onClick={() => runCta(cta)}
                   >
                     {cta.icon && <Icon iconName={cta.icon} className={styles.ctaIcon} />}

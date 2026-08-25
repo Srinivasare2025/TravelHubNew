@@ -1,4 +1,4 @@
-/* tslint:disable */
+
 require("./ProcessSteps.module.css");
 const styles = {
   row: 'row_9c5bf339',
@@ -9,4 +9,3 @@ const styles = {
 };
 
 export default styles;
-/* tslint:enable */

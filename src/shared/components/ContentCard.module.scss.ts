@@ -1,17 +1,16 @@
-/* tslint:disable */
+
 require("./ContentCard.module.css");
 const styles = {
-  card: 'card_b35f9ccc',
-  thumb: 'thumb_b35f9ccc',
-  body: 'body_b35f9ccc',
-  metaRow: 'metaRow_b35f9ccc',
-  pill: 'pill_b35f9ccc',
-  ribbon: 'ribbon_b35f9ccc',
-  limited: 'limited_b35f9ccc',
-  exclusive: 'exclusive_b35f9ccc',
-  event: 'event_b35f9ccc',
-  announcement: 'announcement_b35f9ccc'
+  card: 'card_f068eb55',
+  thumb: 'thumb_f068eb55',
+  body: 'body_f068eb55',
+  metaRow: 'metaRow_f068eb55',
+  pill: 'pill_f068eb55',
+  ribbon: 'ribbon_f068eb55',
+  limited: 'limited_f068eb55',
+  exclusive: 'exclusive_f068eb55',
+  event: 'event_f068eb55',
+  announcement: 'announcement_f068eb55'
 };
 
 export default styles;
-/* tslint:enable */

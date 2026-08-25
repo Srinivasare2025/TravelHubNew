@@ -1,4 +1,4 @@
-/* tslint:disable */
+
 require("./MediaLibraryPage.module.css");
 const styles = {
   grid: 'grid_7b3cb919',
@@ -11,4 +11,3 @@ const styles = {
 };
 
 export default styles;
-/* tslint:enable */

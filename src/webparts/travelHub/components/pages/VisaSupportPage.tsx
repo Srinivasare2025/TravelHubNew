@@ -2,9 +2,9 @@ import * as React from 'react';
 import { Icon } from '@fluentui/react';
 import { useNavigate } from 'react-router-dom';
 import { useServiceContext } from '../../../../state/ServiceContext';
-import { useThemeContext } from '../../../../state/ThemeContext';
 import { Hero, IconFeatureGrid, ProcessSteps, CTABand } from '../../../../shared/components';
 import { resortHeroPlaceholderImage } from '../../../../assets/images';
+import { FIXED_PALETTE } from '../../../../theme/themes';
 import styles from './VisaSupportPage.module.scss';
 
 const SERVICES = [
@@ -34,7 +34,6 @@ const INFO_LINKS = ['Visa Policy Compliance — Understand company visa policies
 
 export const VisaSupportPage: React.FC = () => {
   const { service } = useServiceContext();
-  const { theme } = useThemeContext();
   const navigate = useNavigate();
 
   React.useEffect(() => {
@@ -48,7 +47,7 @@ export const VisaSupportPage: React.FC = () => {
         title="Visa Support"
         highlight="We make your travel seamless."
         description="Our Visa Support team is here to help you navigate visa requirements with ease so you can focus on what matters."
-        backgroundImageUrl={resortHeroPlaceholderImage(theme.palette.secondary, theme.palette.primary)}
+        backgroundImageUrl={resortHeroPlaceholderImage(FIXED_PALETTE.secondary, FIXED_PALETTE.primary)}
         infoStrip={(
           <div className={styles.benefitRow}>
             <div><Icon iconName="ContactCard" /><div><strong>Business & Assignment Visas</strong><span>Support for short-term business trips and long-term assignments.</span></div></div>
