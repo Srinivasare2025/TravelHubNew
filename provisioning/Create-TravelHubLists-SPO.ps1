@@ -288,7 +288,7 @@ if (-not (Get-PnPFolder -Url "SiteAssets/travelhub" -ErrorAction SilentlyContinu
 # Audit trail
 # ---------------------------------------------------------------------------
 Write-Host "Enabling audit settings..." -ForegroundColor Cyan
-Set-PnPAuditing -EditItems -CheckOutCheckInItems -DeleteRestoreItems -EditContentTypesColumns -EditUsersAndPermissions -SearchContent
+Set-PnPAuditing -EditItems -CheckOutCheckInItems -DeleteRestoreItems -EditContentTypesColumns -EditUsersPermissions -SearchContent
 
 Write-Host "`nTravel Hub provisioning complete." -ForegroundColor Green
 Write-Host "Next steps:" -ForegroundColor Yellow
